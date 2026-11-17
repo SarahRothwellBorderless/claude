@@ -179,6 +179,8 @@ a.more:hover .ico{transform:translateX(3px)}
 .hero .lede{grid-column:2;margin-bottom:28px}
 .hero .btn-row{grid-column:2}
 .hero-media img{height:780px;border-radius:0}
+.hero-video{display:block;width:100%;height:780px;object-fit:cover}
+.hero .play{display:none}
 .chips{right:48px;bottom:40px;top:auto;flex-direction:row}
 .chip{background:rgba(255,255,255,.94);color:var(--ink);box-shadow:0 10px 30px rgba(0,0,0,.14)}
 .chip .i{color:var(--blue)}
@@ -318,6 +320,7 @@ a.more:hover .ico{transform:translateX(3px)}
 .hero h1,.hero .lede,.hero .btn-row{grid-column:1;grid-row:auto}
 .hero h1{font-size:52px;margin-bottom:20px}
 .hero-media img{height:520px}
+.hero-video{height:520px}
 .chips{left:16px;right:16px;bottom:16px;justify-content:flex-start}
 .play{width:64px;height:64px;left:16px;top:16px;bottom:auto}
 .why-intro{grid-template-columns:minmax(0,1fr);gap:20px}
@@ -366,7 +369,7 @@ body{max-width:390px;margin:0 auto;box-shadow:0 0 0 1px #ddd}
 <div class="btn-row"><a class="btn btn-accent" href="#">Discover more</a><a class="btn btn-ghost" href="#">Book a consultation</a></div>
 </div>
 <div class="hero-media">
-<img src="img/kids-crowd.jpg" alt="A crowd of smiling children reaching towards the camera">
+<video class="hero-video" src="img/hero-film.mp4" poster="img/hero-film-poster.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="Film: a young girl looking out through a metal grille"></video>
 <button class="play" type="button" aria-label="Play film"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></button>
 <div class="chips"><span class="chip"><svg class="i" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path><path d="M8.5 11l2 2 3.5-3.5"></path></svg>Due diligence</span><span class="chip"><svg class="i" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18"></path><path d="M7 21h10"></path><path d="M5 7h14"></path><path d="M5 7l-3 7a3 3 0 0 0 6 0L5 7z"></path><path d="M19 7l-3 7a3 3 0 0 0 6 0l-3-7z"></path></svg>Legal compliance</span><span class="chip"><svg class="i" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"></circle><path d="M8.5 14l-1.5 7 5-3 5 3-1.5-7"></path></svg>Certified B Corp</span></div>
 </div>
