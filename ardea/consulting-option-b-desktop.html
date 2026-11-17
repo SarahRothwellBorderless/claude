@@ -24,6 +24,8 @@ a.more:hover .ico{transform:translateX(3px)}
 .more{display:inline-flex;align-items:center;gap:8px;font-weight:600;text-decoration:none}
 .tags{display:flex;flex-wrap:wrap;gap:8px}
 .tag{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;line-height:1}
+.ev-img{display:none}
+.qtag{display:none}
 .icon-tile{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;flex:none}
 /* header */
 .hdr{position:relative;z-index:2}
@@ -215,7 +217,9 @@ a.more:hover .ico{transform:translateX(3px)}
 .story-in{gap:20px;align-items:stretch;grid-template-columns:minmax(0,6fr) minmax(0,6fr)}
 .story-media img{border-radius:28px;height:100%}
 .quote{background:var(--lime);color:var(--dark);border-radius:28px;padding:48px;display:flex;flex-direction:column;justify-content:center}
-.quote .qmark{color:var(--dark)}
+.quote .qmark{display:none}
+.qtag{display:inline-flex !important;align-items:center;gap:8px;align-self:flex-start;padding:8px 14px;border-radius:999px;background:var(--dark);color:var(--lime);font-size:14px;font-weight:600}
+.quote blockquote{margin-top:24px}
 .quote blockquote{font-size:30px;font-weight:600}
 .quote figcaption span{color:#2B3A28}
 .quote .btn{background:var(--dark);color:#fff !important;align-self:flex-start}
@@ -458,6 +462,7 @@ a.more:hover .ico{transform:translateX(3px)}
 <div class="story-media"><img src="img/professional.jpg" alt="A smiling professional standing in an office"><button class="play" type="button" aria-label="Play case study film"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></button></div>
 <figure class="quote">
 <svg class="qmark" width="56" height="44" viewBox="0 0 56 44" fill="currentColor" aria-hidden="true"><path d="M0 44V26C0 11 7 2 21 0l2 6C15 8 11 13 11 20h10v24H0zm33 0V26C33 11 40 2 54 0l2 6c-8 2-12 7-12 14h10v24H33z"></path></svg>
+<p class="qtag"><svg class="i" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"></path><path d="M8.5 12h.01"></path><path d="M12 12h.01"></path><path d="M15.5 12h.01"></path></svg><span>Client story</span></p>
 <blockquote>We achieved BS8901 and ISO 20121 with Ardea's expert guidance. Their support in setting up essential systems and processes was key to our success. I highly recommend their services to any organisation seeking similar certifications.</blockquote>
 <figcaption><strong>Mirabelle Chatterjee</strong><span>Senior Manager, UBM Live</span></figcaption>
 <a class="btn" href="#">Read the case study</a>
