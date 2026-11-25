@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Directory: entry page · Locate wireframes</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+:root{
+  /* Low-fi wireframe: greyscale page, yellow annotation layer. Deliberately single (light) theme. */
+  --ink:#1d2126; --mid:#5a626c; --soft:#8a929c; --line:#c5cbd2; --fill:#eef0f3; --fill2:#dde1e6;
+  --paper:#ffffff; --canvas:#d9dde2; --pin:#f4c430; --pin-ink:#3a2c00;
+  --t-decision:#1f5fa8; --t-client:#2d7a46; --t-guess:#b3541e; --t-open:#7a3fa0;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono: ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html,body{background:var(--canvas);color:var(--ink);font-family:var(--sans);margin:0}
+a{color:inherit}
+/* ---------- viewer chrome ---------- */
+.viewer{padding-block:16px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;max-width:1280px;margin:0 auto 14px}
+.bar h1{font-size:15px;margin:0;font-weight:600}
+.bar .crumbs{font-size:13px;color:var(--mid)}
+.bar .crumbs a{color:var(--ink)}
+.seg{display:inline-flex;border:1px solid var(--ink);border-radius:6px;overflow:hidden}
+.seg button{font:inherit;font-size:13px;padding:6px 12px;border:0;background:var(--paper);color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.seg button:focus-visible,.toggles button:focus-visible{outline:3px solid var(--pin);outline-offset:1px}
+.toggles{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.toggles .plain{font:inherit;font-size:13px;padding:6px 12px;border:1px solid var(--ink);border-radius:6px;background:var(--paper);cursor:pointer}
+.stage{overflow-x:auto;padding-bottom:8px}
+.frame{container:site / inline-size;width:1280px;margin:0 auto;background:var(--paper);box-shadow:0 1px 0 var(--line),0 8px 30px rgba(0,0,0,.12);transition:width .2s}
+.frame.mobile{width:390px;border-radius:22px;overflow:hidden;border:10px solid #2a2e33}
+@media (prefers-reduced-motion: reduce){.frame{transition:none}}
+.hide-notes .pin{display:none}
+.pagenav{max-width:1280px;margin:18px auto 0;display:flex;justify-content:space-between;gap:12px;font-size:14px;flex-wrap:wrap}
+/* ---------- annotations ---------- */
+.pin{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:var(--pin);color:var(--pin-ink);font:700 12px/1 var(--sans);vertical-align:middle;margin-left:6px;align-self:flex-start;flex:none;width:fit-content;box-shadow:0 0 0 2px var(--paper);text-decoration:none}
+.notes{max-width:1280px;margin:22px auto 0;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:20px 24px}
+.notes h2{font-size:16px;margin:0 0 4px}
+.notes .legend{font-size:13px;color:var(--mid);margin:0 0 14px;display:flex;flex-wrap:wrap;gap:6px 14px}
+.notes ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:10px 24px}
+.notes li{display:grid;grid-template-columns:28px 1fr;gap:8px;font-size:14px;line-height:1.45;min-width:0}
+.notes li .pin{margin:0}
+.tag{display:inline-block;font:700 10.5px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;padding:3px 6px;border-radius:3px;color:#fff;margin-right:6px;vertical-align:1px}
+.tag.decision{background:var(--t-decision)}.tag.client{background:var(--t-client)}.tag.guess{background:var(--t-guess)}.tag.open{background:var(--t-open)}
+/* ---------- wireframe site ---------- */
+.site{font-size:17px;line-height:1.55;color:var(--ink)}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:40px}
+.sample{background:repeating-linear-gradient(45deg,var(--fill),var(--fill) 8px,var(--paper) 8px,var(--paper) 16px);border-bottom:1px solid var(--line);font-size:13px;text-align:center;padding:6px 12px;color:var(--mid)}
+.skip{position:absolute;left:-999px}
+.util{border-bottom:1px solid var(--line);font-size:14px}
+.util .wrap{display:flex;justify-content:flex-end;gap:20px;align-items:center;min-height:40px}
+.util a{color:var(--mid)}
+.hdr{border-bottom:2px solid var(--ink)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:84px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo .mark{width:44px;height:44px;border:2px solid var(--ink);display:grid;place-items:center;font:700 11px var(--mono);border-radius:4px}
+.logo b{display:block;font-size:19px;line-height:1.15}
+.logo small{display:block;font-size:13px;color:var(--mid)}
+.hdr-actions{display:flex;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border:2px solid var(--ink);border-radius:6px;background:var(--paper);color:var(--ink);font:600 16px var(--sans);text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn.exit{background:var(--fill2);border-style:solid}
+.btn.small{min-height:40px;padding:0 14px;font-size:15px}
+.menu-btn{display:none}
+.nav{border-bottom:1px solid var(--line);background:var(--fill)}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap}
+.nav a{display:block;padding:14px 16px;font-size:16px;text-decoration:none;border-bottom:4px solid transparent}
+.nav a[aria-current]{border-bottom-color:var(--ink);font-weight:700}
+.nav li:first-child a{padding-left:0}
+.support-tab{position:absolute;right:0;top:220px;writing-mode:vertical-rl;transform:rotate(180deg);background:var(--ink);color:var(--paper);padding:16px 10px;font-weight:600;font-size:15px;border-radius:0 6px 6px 0;text-decoration:none}
+.site-inner{position:relative}
+main{padding-block:40px 56px}
+h1,h2,h3{text-wrap:balance;line-height:1.2;margin:0}
+.site h1{font-size:40px}
+.site h2{font-size:28px}
+.site h3{font-size:20px}
+.lede{font-size:20px;color:var(--mid);max-width:44ch;margin:12px 0 0}
+p{margin:0}
+.stack{display:flex;flex-direction:column;gap:16px}
+.stack-lg{display:flex;flex-direction:column;gap:48px}
+.muted{color:var(--mid)}
+.small{font-size:15px}
+.box{border:1px solid var(--line);border-radius:6px;padding:20px}
+.box.fill{background:var(--fill);border-color:var(--fill2)}
+.box.strong{border:2px solid var(--ink)}
+.img{background:var(--fill2);display:grid;place-items:center;color:var(--soft);font:12px var(--mono);border-radius:4px;position:relative;overflow:hidden}
+.img::before,.img::after{content:"";position:absolute;inset:0;background:linear-gradient(to top right,transparent calc(50% - 1px),var(--line) 50%,transparent calc(50% + 1px))}
+.img::after{background:linear-gradient(to top left,transparent calc(50% - 1px),var(--line) 50%,transparent calc(50% + 1px))}
+.img span{position:relative;z-index:1;background:var(--fill2);padding:2px 6px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.side{display:grid;grid-template-columns:280px 1fr;gap:40px;align-items:start}
+.side-r{display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:start}
+.side > *, .side-r > *, .grid2 > *, .grid3 > *, .grid4 > *{min-width:0}
+/* search */
+.search{display:flex;flex-direction:column;gap:10px}
+.search label{font-weight:700;font-size:18px}
+.search .row{display:flex;gap:10px}
+.field{flex:1;min-height:60px;border:2px solid var(--ink);border-radius:6px;display:flex;align-items:center;padding:0 16px;color:var(--soft);font-size:18px;background:var(--paper)}
+.field.filled{color:var(--ink)}
+.field.sm{min-height:48px;font-size:16px}
+.search .btn{min-height:60px;padding:0 28px;font-size:18px}
+.hint{font-size:15px;color:var(--mid)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--ink);border-radius:999px;padding:6px 14px;font-size:15px;text-decoration:none;background:var(--paper)}
+.chip.on{background:var(--ink);color:var(--paper)}
+.disclose{font-weight:600;text-decoration:underline;font-size:16px}
+.opt{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.opt .f{display:flex;flex-direction:column;gap:6px;font-size:15px;font-weight:600}
+.hero{padding-block:48px;border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:start}
+.hero .wrap > *{min-width:0}
+.card{border:1px solid var(--line);border-radius:6px;padding:20px;display:flex;flex-direction:column;gap:8px;text-decoration:none;background:var(--paper)}
+.card h3 a{text-decoration:underline}
+.arrow::after{content:" →"}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{counter-increment:s;display:grid;grid-template-columns:48px 1fr;gap:16px}
+.steps li::before{content:counter(s);width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-weight:700}
+.list-tick{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.list-tick li{padding-left:28px;position:relative}
+.list-tick li::before{content:"✓";position:absolute;left:0;font-weight:700}
+.list-cross li::before{content:"✕"}
+.band{background:var(--fill);border-block:1px solid var(--fill2);padding-block:40px}
+.note-inline{border-left:4px solid var(--ink);background:var(--fill);padding:14px 18px;font-size:16px}
+.ftr{background:var(--ink);color:#e7eaee;padding-block:40px;font-size:15px}
+.ftr a{color:#e7eaee}
+.ftr .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px}
+.ftr ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.ftr h3{font-size:16px;margin-bottom:10px}
+.mobile-support{display:none}
+/* results */
+.res-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px}
+.result{border:1px solid var(--line);border-radius:6px;padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+.result .type{font:600 12px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--mid)}
+.result h3{font-size:22px}
+.result h3 a{text-decoration:underline}
+.meta{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:15px;color:var(--mid)}
+.chain{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.chain > div{padding:12px 16px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.chain > div + div{border-left:1px solid var(--line);background:var(--fill)}
+.chain .k{font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--mid)}
+.status{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;padding:3px 10px;border-radius:999px;width:fit-content}
+.status.confirmed{background:var(--ink);color:var(--paper)}
+.status.confirmed::before{content:"✓"}
+.status.possible{border:2px dashed var(--ink);padding:1px 8px}
+.status.possible::before{content:"?"}
+.matched{font-size:14px;color:var(--mid)}
+.matched mark{background:var(--fill2);color:var(--ink);padding:0 2px}
+.filters{display:flex;flex-direction:column;gap:20px}
+.filters fieldset{border:0;border-top:1px solid var(--line);padding:16px 0 0;margin:0;display:flex;flex-direction:column;gap:8px}
+.filters legend{font-weight:700;padding:0;margin-bottom:6px}
+.cb{display:flex;gap:10px;align-items:center;font-size:16px}
+.cb i{width:22px;height:22px;border:2px solid var(--ink);border-radius:3px;flex:none;display:grid;place-items:center;font-style:normal;font-size:14px;font-weight:700}
+.filters-btn{display:none}
+.crumb{font-size:15px;color:var(--mid);margin-bottom:18px}
+.crumb a{color:var(--ink)}
+.kv{display:grid;grid-template-columns:140px 1fr;gap:6px 16px;font-size:16px;margin:0}
+.kv dt{font-weight:700}
+.kv dd{margin:0;min-width:0}
+.det{border:1px solid var(--line);border-radius:6px}
+.det summary{padding:16px 20px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+.det summary::after{content:"+";font-size:22px;line-height:1}
+.det[open] summary::after{content:"–"}
+.det .in{padding:0 20px 18px}
+.tabs{display:flex;border-bottom:2px solid var(--ink)}
+.tabs span{padding:10px 18px;font-weight:600;border:1px solid var(--line);border-bottom:0;border-radius:6px 6px 0 0;margin-right:4px;background:var(--fill)}
+.tabs span.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.flow{display:grid;grid-template-columns:1fr 32px 1fr 32px 1fr;align-items:stretch}
+.flow .n{border:2px solid var(--ink);border-radius:6px;padding:12px 14px;font-size:15px;min-width:0}
+.flow .n.dash{border-style:dashed}
+.flow .n b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mid)}
+.flow .a{display:grid;place-items:center;font-size:22px}
+.toggle-view{display:inline-flex;border:2px solid var(--ink);border-radius:6px;overflow:hidden}
+.toggle-view span{padding:8px 18px;font-weight:600}
+.toggle-view span.on{background:var(--ink);color:var(--paper)}
+.pager{display:flex;gap:8px;align-items:center;font-size:16px}
+.pager span{min-width:40px;height:40px;border:1px solid var(--line);display:grid;place-items:center;border-radius:4px}
+.pager span.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.dym{border:2px solid var(--ink);border-radius:6px;padding:20px 22px}
+
+/* =============== MOBILE (container) =============== */
+@container site (max-width: 640px){
+  .site{font-size:17px}
+  .wrap{padding-inline:18px}
+  .util{display:none}
+  .hdr .wrap{min-height:64px;gap:8px}
+  .logo .mark{width:34px;height:34px;font-size:9px}
+  .logo b{font-size:15px}
+  .logo small{display:none}
+  .hdr-actions .hide-m{display:none}
+  .btn.exit{min-height:44px;padding:0 12px;font-size:15px}
+  .menu-btn{display:inline-flex;min-height:44px;padding:0 12px;font-size:15px}
+  .nav{display:none}
+  .support-tab{display:none}
+  .mobile-support{display:flex;position:sticky;bottom:0;z-index:5;background:var(--paper);border-top:2px solid var(--ink);padding:10px 18px;gap:10px}
+  .mobile-support .btn{flex:1;min-height:48px}
+  main{padding-block:24px 40px}
+  .site h1{font-size:30px}
+  .site h2{font-size:24px}
+  .lede{font-size:18px}
+  .hero{padding-block:28px}
+  .hero .wrap{grid-template-columns:1fr;gap:28px}
+  .search .row{flex-direction:column}
+  .search .btn{width:100%}
+  .opt{grid-template-columns:1fr}
+  .grid2,.grid3,.grid4{grid-template-columns:1fr;gap:14px}
+  .side,.side-r{grid-template-columns:1fr;gap:24px}
+  .side > .filters{display:none}
+  .filters-btn{display:flex}
+  .chain{grid-template-columns:1fr}
+  .chain > div + div{border-left:0;border-top:1px solid var(--line)}
+  .result{padding:16px}
+  .result h3{font-size:20px}
+  .kv{grid-template-columns:1fr;gap:0}
+  .kv dd{margin-bottom:10px}
+  .flow{grid-template-columns:1fr;gap:0}
+  .flow .a{transform:rotate(90deg);height:32px}
+  .ftr .cols{grid-template-columns:1fr}
+  .res-head{align-items:start}
+  .tabs span{padding:10px 12px;font-size:15px}
+  .order-m-first{order:-1}
+}
+</style>
+</head>
+<body>
+<div class="viewer">
+<div class="bar"><div><div class="crumbs"><a href="index.html">Locate wireframes</a> / 04</div><h1>Directory: entry page</h1></div>
+<div class="toggles"><div class="seg" role="group" aria-label="Screen size"><button type="button" data-view="desktop" aria-pressed="true">Desktop</button><button type="button" data-view="mobile" aria-pressed="false">Mobile</button></div><button class="plain" id="notes-toggle" type="button">Hide notes</button></div></div>
+<div class="stage"><div class="frame">
+<div class="site">
+<a class="skip" href="#main">Skip to content</a>
+<div class="sample">Wireframe with sample data. Holders, dates, counts and contact details are illustrative and have not been checked.</div>
+<div class="util"><div class="wrap"><a href="#">Language glossary</a><a href="#">Accessibility and alternative formats</a><a href="#">Cymraeg</a><a class="pin" href="#note-G1" aria-label="Note G1">G1</a></div></div>
+<div class="site-inner">
+<header class="hdr"><div class="wrap">
+  <a class="logo" href="01-homepage.html" data-keepview><span class="mark">LOGO</span><span><b>Locate: care and adoption records</b><small>Find who holds records about you, and how to ask for them</small></span></a>
+  <div class="hdr-actions"><a class="btn small hide-m" href="#">Get support</a><a class="btn exit" href="#">✕ Quick exit</a><a class="pin" href="#note-G2" aria-label="Note G2">G2</a><button class="btn menu-btn" type="button">Menu</button></div>
+</div></header>
+<nav class="nav" aria-label="Main"><div class="wrap"><ul><li><a href="#">About</a></li><li><a href="#" aria-current="page">Locate your records</a></li><li><a href="#">Getting your records</a></li><li><a href="#">Your rights</a></li><li><a href="#">Find support</a></li><li><a href="#">For record holders</a></li></ul></div></nav>
+<a class="support-tab" href="#">Need support?</a>
+<main id="main">
+<div class="wrap">
+  <p class="crumb"><a href="01-homepage.html" data-keepview>Home</a> › <a href="02-directory-search.html" data-keepview>Locate your records</a> › <a href="03-search-results.html" data-keepview>Results for 'Putney'</a> › Putney Home for Mothers and Babies</p>
+  <div class="side-r">
+    <div class="stack-lg">
+      <div class="stack" style="gap:10px">
+        <span class="result" style="border:0;padding:0"><span class="type">Mother and baby home</span></span>
+        <h1>Putney Home for Mothers and Babies</h1>
+        <div class="meta" style="font-size:17px"><span>15 Genoa Avenue, Putney, London SW15</span><span>Open c. 1930s to 1970s (as recorded)</span><a class="pin" href="#note-1" aria-label="Note 1">1</a></div>
+      </div>
+
+      <section class="box strong stack order-m-first" aria-labelledby="who">
+        <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center"><h2 id="who" style="font-size:24px">Who to contact<a class="pin" href="#note-2" aria-label="Note 2">2</a></h2><span class="status confirmed">Confirmed holder</span></div>
+        <p>Records created by this home are now held by:</p>
+        <p style="font-size:22px;font-weight:700">London Metropolitan Archives</p>
+        <dl class="kv"><dt>Address</dt><dd>[Street address, London, postcode]</dd><dt>Email</dt><dd>[enquiries email address]</dd><dt>Phone</dt><dd>[phone number]</dd><dt>Website</dt><dd><a href="#">[How to ask for records]</a></dd></dl>
+        <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn primary small" href="#">Copy contact details</a><a class="btn small" href="#">Print this page</a></div>
+        <p class="small muted">Details last checked: October 2026. <a href="#">Report a change</a></p>
+      </section>
+
+      <p class="note-inline">An entry helps you identify who to contact, but does not confirm that your individual records exist.<a class="pin" href="#note-3" aria-label="Note 3">3</a></p>
+
+      <section class="stack">
+        <h2>How the records got there<a class="pin" href="#note-4" aria-label="Note 4">4</a></h2>
+        <div class="flow">
+          <div class="n"><b>Created by</b>Putney Home for Mothers and Babies</div><div class="a" aria-hidden="true">→</div>
+          <div class="n"><b>Records</b>Admission registers and case files, c. 1940s to 1970s</div><div class="a" aria-hidden="true">→</div>
+          <div class="n"><b>Now held by</b>London Metropolitan Archives</div>
+        </div>
+      </section>
+
+      <section class="stack">
+        <h2>What records are held<a class="pin" href="#note-5" aria-label="Note 5">5</a></h2>
+        <dl class="kv"><dt>Types</dt><dd>Admission registers, case files, some correspondence</dd><dt>Dates</dt><dd>c. 1940s to 1970s. Earlier years may be missing.</dd><dt>Access</dt><dd>Closed to the public. Open to the person the record is about, on request with ID.</dd><dt>Catalogue</dt><dd><a href="#">[Catalogue reference]</a></dd></dl>
+      </section>
+
+      <section class="stack">
+        <h2>Before you get in touch<a class="pin" href="#note-6" aria-label="Note 6">6</a></h2>
+        <div class="tabs" role="tablist"><span class="on">I was adopted</span><span>I was in care</span><span>I'm a relative</span></div>
+        <div class="stack">
+          <p>Contact the organisation and ask how it wants to receive your request. It helps to give:</p>
+          <ul class="list-tick"><li>your full name and any previous names</li><li>your date of birth</li><li>the places and dates you remember, even if they're rough</li><li>proof of identity, if they ask for it. For adoption, this is often a birth certificate.</li></ul>
+          <p class="small">Your rights depend on when the adoption happened. <a href="#">Adoption records: your rights</a></p>
+        </div>
+      </section>
+
+      <details class="det" open><summary>History of this home<a class="pin" href="#note-7" aria-label="Note 7">7</a></summary><div class="in stack small">
+        <p>[Administrative history from the dataset: when it opened and closed, who ran it, changes of name and where its records went.]</p>
+        <dl class="kv"><dt>Other names</dt><dd>[Former names]</dd><dt>Run by</dt><dd>[Organisation that ran the home]</dd><dt>Closed</dt><dd>[Year, if known]</dd></dl></div></details>
+      <details class="det"><summary>Related places and organisations</summary><div class="in small">Hospital where babies were born · council that covered the area · the organisation that ran the home</div></details>
+    </div>
+
+    <aside class="stack" style="gap:20px">
+      <div class="img" style="height:200px"><span>Map: approximate location</span></div>
+      <p class="small muted" style="margin-top:-10px">The location is approximate. It shows where the home was, not where the records are now.<a class="pin" href="#note-8" aria-label="Note 8">8</a></p>
+      <div class="box fill stack"><h3>Reading your records can be hard</h3><p class="small">Ask if they offer supported release, where someone helps you read your file.</p><a class="small" href="#">Find support</a></div>
+      <div class="box stack"><h3>Is something wrong here?</h3><p class="small muted">Tell us if the contact has changed or the details are wrong. We check every report.</p><a class="btn small" href="#" style="width:fit-content">Report a problem</a><a class="pin" href="#note-9" aria-label="Note 9">9</a></div>
+      <div class="box stack"><h3>Other places nearby at that time</h3><a class="small" href="#">St Margaret's Children's Home</a><a class="small" href="#">Metropolitan Borough of Wandsworth</a></div>
+    </aside>
+  </div>
+</div>
+</main>
+<footer class="ftr"><div class="wrap cols">
+  <div class="stack"><b>Locate: care and adoption records</b><p>Developed by CoramBAAF, UCL and CALGG with an advisory group of care experienced and adopted people.</p><p>[Partner logos]</p></div>
+  <div><h3>This website</h3><ul><li><a href="#">About</a></li><li><a href="#">Language glossary</a></li><li><a href="#">Feedback</a></li></ul></div>
+  <div><h3>Help</h3><ul><li><a href="#">Find support</a></li><li><a href="#">Accessibility and alternative formats</a></li><li><a href="#">Contact us</a></li></ul></div>
+  <div><h3>Legal</h3><ul><li><a href="#">Privacy notice</a></li><li><a href="#">Cookies</a></li></ul></div>
+</div></footer>
+<div class="mobile-support"><a class="btn" href="#">Get support</a><a class="btn exit" href="#">✕ Quick exit</a></div>
+</div>
+</div></div></div>
+<nav class="pagenav" aria-label="Screens">
+<span><a href="03-search-results.html" data-keepview>← Directory: search results</a></span>
+<span><a href="05-no-results.html" data-keepview>Directory: no exact match →</a></span></nav>
+<section class="notes" aria-label="Annotations"><h2>Notes for this screen</h2>
+<p class="legend"><span class="tag decision">Workshop decision</span> agreed at the 24 Nov workshop or in the brief <span class="tag client">Client copy</span> wording taken from the November content <span class="tag guess">Guess</span> our assumption, to check <span class="tag open">Open question</span> still to be decided</p>
+<ol><li id="note-1"><span class="pin">1</span><span><span class="tag decision">Workshop decision</span>Dates shown as recorded ('c. 1930s'). No false precision. The address comes from the client's real request email. The dates and holder are sample data.</span></li><li id="note-2"><span class="pin">2</span><span><span class="tag decision">Workshop decision</span>Who to contact now comes first, because that's the outcome people came for. On mobile this box moves above everything else. Each holder gets a stable URL (about 430 holders, from the CALGG plan). Copy and print help people who make requests offline.</span></li><li id="note-3"><span class="pin">3</span><span><span class="tag client">Client copy</span>Client wording from 'Where to start'.</span></li><li id="note-4"><span class="pin">4</span><span><span class="tag decision">Workshop decision</span>Shows how creator, records and current holder connect, so people can see why the records aren't held at the home's address. The St Mary's to London Archives example from the workshop is the same pattern.</span></li><li id="note-5"><span class="pin">5</span><span><span class="tag guess">Guess</span>These fields are our guess at the record set data. We need the dataset field rules to confirm.</span></li><li id="note-6"><span class="pin">6</span><span><span class="tag client">Client copy</span>Care, adoption and relative versions, kept separate. The checklist text is adapted from 'Care records: How to locate records'. The birth certificate point is from the workshop. Each version links to its own rights pathway.</span></li><li id="note-7"><span class="pin">7</span><span><span class="tag decision">Workshop decision</span>Administrative history is shown only when someone opens it, because it's inconsistent in the data and long.</span></li><li id="note-8"><span class="pin">8</span><span><span class="tag open">Open question</span>The map is small and secondary. What a pin means (where the home was, or where the records are now) is still open.</span></li><li id="note-9"><span class="pin">9</span><span><span class="tag decision">Workshop decision</span>Report a problem on every entry. User feedback (e.g. 'they've moved three doors down') is checked, then used to update the data. No promise of a personal reply.</span></li><li id="note-G1"><span class="pin">G1</span><span><span class="tag open">Open question</span>Welsh for key pages only, if Welsh Government funding comes through. Glossary and accessibility links sit in the utility bar so they're on every page.</span></li><li id="note-G2"><span class="pin">G2</span><span><span class="tag decision">Workshop decision</span>Quick exit and support on every page. Desktop: header button plus a side tab. Mobile: a bar fixed to the bottom of the screen. Quick exit should replace the page and clear it from history. The site tree note asks for 'Exit, support and pins on sidebar'. We've read 'pins' as map pins, which needs checking.</span></li></ol></section>
+</div>
+<script>
+(function(){
+  var frame=document.querySelector('.frame');
+  var btns=document.querySelectorAll('[data-view]');
+  function set(v){
+    frame.classList.toggle('mobile',v==='mobile');
+    btns.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.view===v));});
+    try{ if(history.replaceState){history.replaceState(null,'',v==='mobile'?'#mobile':'#desktop');} }catch(e){}
+    document.querySelectorAll('a[data-keepview]').forEach(function(a){a.href=a.getAttribute('href').split('#')[0]+'#'+v;});
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){set(b.dataset.view);});});
+  set(location.hash==='#mobile'?'mobile':'desktop');
+  window.addEventListener('hashchange',function(){set(location.hash==='#mobile'?'mobile':'desktop');});
+  var nb=document.getElementById('notes-toggle');
+  if(nb){nb.addEventListener('click',function(){var h=document.body.classList.toggle('hide-notes');nb.textContent=h?'Show notes':'Hide notes';});}
+  // stop wireframe links/forms navigating anywhere real
+  document.querySelectorAll('.site a[href="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();});});
+})();
+</script>
+</body>
+</html>
