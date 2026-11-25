@@ -225,13 +225,15 @@ p{margin:0}
   .tabs span{padding:10px 12px;font-size:15px}
   .order-m-first{order:-1}
 }
-html,body.bare{background:#fff}.bare .viewer{padding:0}.bare .bar,.bare .pagenav{display:none}.bare .stage{overflow:visible;padding:0}
-.bare .frame{width:100%;min-width:1280px;margin:0;box-shadow:none}.bare .frame.mobile{width:100%;min-width:0;max-width:390px;border:0;border-radius:0}
-.bare .notes{max-width:none;margin:0;border:0;border-top:4px solid var(--pin);border-radius:0}</style>
+html,body.bare{background:#fff;margin:0;padding:0}
+.bare .frame{width:100%;margin:0;box-shadow:none;border:0;border-radius:0;transition:none}
+.bare .frame:not(.mobile){min-width:1280px}
+.bare .frame.mobile{max-width:390px;border:0;border-radius:0}
+.bare .notes{max-width:none;margin:0;border:0;border-top:4px solid var(--pin);border-radius:0}
+.bare .support-tab{right:0}</style>
 </head>
 <body class="bare">
-<div class="viewer">
-<div class="stage"><div class="frame mobile">
+<div class="frame mobile">
 <div class="site">
 <a class="skip" href="#main">Skip to content</a>
 <div class="sample">Wireframe with sample data. Holders, dates, counts and contact details are illustrative and have not been checked.</div>
@@ -319,13 +321,10 @@ html,body.bare{background:#fff}.bare .viewer{padding:0}.bare .bar,.bare .pagenav
 </div></footer>
 <div class="mobile-support"><a class="btn" href="#">Get support</a><a class="btn exit" href="#">✕ Quick exit</a></div>
 </div>
-</div></div></div>
-
+</div></div>
 <section class="notes" aria-label="Annotations"><h2>Notes for this screen</h2>
 <p class="legend"><span class="tag decision">Workshop decision</span> agreed at the 24 Nov workshop or in the brief <span class="tag client">Client copy</span> wording taken from the November content <span class="tag guess">Guess</span> our assumption, to check <span class="tag open">Open question</span> still to be decided</p>
 <ol><li id="note-1"><span class="pin">1</span><span><span class="tag decision">Workshop decision</span>Search goes up front on the homepage, above the fold on desktop and mobile. No large hero image pushing it down. Headline wording is ours, to be agreed with the client.</span></li><li id="note-2"><span class="pin">2</span><span><span class="tag decision">Workshop decision</span>One search box across homes, organisations and places, with partial matching. This answers the top survey complaint about having to choose Home, Organisation, Staff or Local authority first.</span></li><li id="note-3"><span class="pin">3</span><span><span class="tag guess">Guess</span>Optional date and area fields stay hidden until someone asks for them, so people with only one fact aren't put off. Opens the same three fields as the directory page.</span></li><li id="note-4"><span class="pin">4</span><span><span class="tag decision">Workshop decision</span>The map is a secondary route for people who only know a rough area. The list leads.</span></li><li id="note-5"><span class="pin">5</span><span><span class="tag client">Client copy</span>The can and can't wording is adapted from 'What you can find' and 'Where to start'. 'An entry ... does not confirm that your individual records exist' is the client's line.</span></li><li id="note-6"><span class="pin">6</span><span><span class="tag open">Open question</span>Content warning shown as a light inline note, not a pop-up that blocks search. Text is the client's draft. The advisory group is deciding pop-up or page, and it also depends on the cookie policy.</span></li><li id="note-7"><span class="pin">7</span><span><span class="tag open">Open question</span>Pathway entry points. The advisory group suggested buttons for adopted people, care, relatives and professionals (from memory on the call). Care and adoption get separate pathways because the law differs.</span></li><li id="note-8"><span class="pin">8</span><span><span class="tag guess">Guess</span>Three steps that mirror the main navigation. They also make the 'Locate', 'Getting' and 'Your rights' labels easier to tell apart, which was a workshop concern.</span></li><li id="note-9"><span class="pin">9</span><span><span class="tag guess">Guess</span>Support band. The services are from the client's Find support list. Samaritans and Shout details should be checked before launch. 'We don't save your searches' fits the no-tracking analytics rule.</span></li><li id="note-10"><span class="pin">10</span><span><span class="tag decision">Workshop decision</span>A feedback route without promising a reply, because there's no staff funding to answer enquiries.</span></li><li id="note-11"><span class="pin">11</span><span><span class="tag guess">Guess</span>From the workshop: the birth certificate is 'one of the most important documents' because it shows where someone was born and where their mother lived. The intro should ask what information people already have. It's often needed when writing to a holder for adoption, but not always. Shown as optional so it never blocks searching. The care-papers card is our guess at the care equivalent, because the transcript is unclear ('doctor's certificate'?).</span></li><li id="note-G1"><span class="pin">G1</span><span><span class="tag decision">Workshop decision</span>Quick exit and support on every page. Desktop: header button plus a side tab. Mobile: a bar fixed to the bottom of the screen. Quick exit should replace the page and clear it from history. The site tree note asks for 'Exit, support and pins on sidebar'. We've read 'pins' as map pins, which needs checking.</span></li></ol></section>
-</div>
-<script>(function(){var nb=document.getElementById('notes-toggle');if(nb){nb.addEventListener('click',function(){var h=document.body.classList.toggle('hide-notes');nb.textContent=h?'Show notes':'Hide notes';});}
-document.querySelectorAll('.site a[href="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();});});})();</script>
+<script>document.querySelectorAll('.site a[href="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();});});</script>
 </body>
 </html>

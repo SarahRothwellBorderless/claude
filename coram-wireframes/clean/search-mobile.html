@@ -225,13 +225,15 @@ p{margin:0}
   .tabs span{padding:10px 12px;font-size:15px}
   .order-m-first{order:-1}
 }
-html,body.bare{background:#fff}.bare .viewer{padding:0}.bare .bar,.bare .pagenav{display:none}.bare .stage{overflow:visible;padding:0}
-.bare .frame{width:100%;min-width:1280px;margin:0;box-shadow:none}.bare .frame.mobile{width:100%;min-width:0;max-width:390px;border:0;border-radius:0}
-.bare .notes{max-width:none;margin:0;border:0;border-top:4px solid var(--pin);border-radius:0}</style>
+html,body.bare{background:#fff;margin:0;padding:0}
+.bare .frame{width:100%;margin:0;box-shadow:none;border:0;border-radius:0;transition:none}
+.bare .frame:not(.mobile){min-width:1280px}
+.bare .frame.mobile{max-width:390px;border:0;border-radius:0}
+.bare .notes{max-width:none;margin:0;border:0;border-top:4px solid var(--pin);border-radius:0}
+.bare .support-tab{right:0}</style>
 </head>
 <body class="bare">
-<div class="viewer">
-<div class="stage"><div class="frame mobile">
+<div class="frame mobile">
 <div class="site">
 <a class="skip" href="#main">Skip to content</a>
 <div class="sample">Wireframe with sample data. Holders, dates, counts and contact details are illustrative and have not been checked.</div>
@@ -299,11 +301,8 @@ html,body.bare{background:#fff}.bare .viewer{padding:0}.bare .bar,.bare .pagenav
 </div></footer>
 <div class="mobile-support"><a class="btn" href="#">Get support</a><a class="btn exit" href="#">✕ Quick exit</a></div>
 </div>
-</div></div></div>
+</div></div>
 
-
-</div>
-<script>(function(){var nb=document.getElementById('notes-toggle');if(nb){nb.addEventListener('click',function(){var h=document.body.classList.toggle('hide-notes');nb.textContent=h?'Show notes':'Hide notes';});}
-document.querySelectorAll('.site a[href="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();});});})();</script>
+<script>document.querySelectorAll('.site a[href="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();});});</script>
 </body>
 </html>
