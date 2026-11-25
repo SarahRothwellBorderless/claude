@@ -225,11 +225,12 @@ p{margin:0}
   .tabs span{padding:10px 12px;font-size:15px}
   .order-m-first{order:-1}
 }
-</style>
+html,body.bare{background:#fff}.bare .viewer{padding:0}.bare .bar,.bare .pagenav{display:none}.bare .stage{overflow:visible;padding:0}
+.bare .frame{width:100%;min-width:1280px;margin:0;box-shadow:none}.bare .frame.mobile{width:100%;min-width:0;max-width:390px;border:0;border-radius:0}
+.bare .notes{max-width:none;margin:0;border:0;border-top:4px solid var(--pin);border-radius:0}</style>
 </head>
-<body>
+<body class="bare">
 <div class="viewer">
-<div class="bar"><div><div class="crumbs"><a href="index.html">Locate wireframes (clean)</a></div><h1>Directory search: mobile</h1></div><div class="toggles"></div></div>
 <div class="stage"><div class="frame mobile">
 <div class="site">
 <a class="skip" href="#main">Skip to content</a>
@@ -299,9 +300,7 @@ p{margin:0}
 <div class="mobile-support"><a class="btn" href="#">Get support</a><a class="btn exit" href="#">✕ Quick exit</a></div>
 </div>
 </div></div></div>
-<nav class="pagenav" aria-label="Screens">
-<span><a href="search-desktop.html">← Directory search, desktop</a></span>
-<span><a href="index.html">All screens →</a></span></nav>
+
 
 </div>
 <script>(function(){var nb=document.getElementById('notes-toggle');if(nb){nb.addEventListener('click',function(){var h=document.body.classList.toggle('hide-notes');nb.textContent=h?'Show notes':'Hide notes';});}
