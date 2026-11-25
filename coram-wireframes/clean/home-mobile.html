@@ -184,7 +184,7 @@ p{margin:0}
 .dym{border:2px solid var(--ink);border-radius:6px;padding:20px 22px}
 
 /* =============== MOBILE (container) =============== */
-@container site (max-width: 640px){
+@media all{
   .site{font-size:17px}
   .wrap{padding-inline:18px}
   .util{display:none}
@@ -228,7 +228,7 @@ p{margin:0}
 html,body.bare{background:#fff;margin:0;padding:0}
 .bare .frame{width:100%;margin:0;box-shadow:none;border:0;border-radius:0;transition:none}
 .bare .frame:not(.mobile){min-width:1280px}
-.bare .frame.mobile{max-width:390px;border:0;border-radius:0}
+.bare .frame.mobile{width:100%;max-width:none;border:0;border-radius:0}
 .bare .notes{max-width:none;margin:0;border:0;border-top:4px solid var(--pin);border-radius:0}
 .bare .support-tab{right:0}</style>
 </head>
