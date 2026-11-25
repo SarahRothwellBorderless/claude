@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Directory: start a search · Locate wireframes</title>
+<title>Directory search (desktop) · Locate wireframes</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
 :root{
@@ -229,43 +229,42 @@ p{margin:0}
 </head>
 <body>
 <div class="viewer">
-<div class="bar"><div><div class="crumbs"><a href="index.html">Locate wireframes (clean)</a> / 02</div><h1>Directory: start a search</h1></div>
-<div class="toggles"><div class="seg" role="group" aria-label="Screen size"><button type="button" data-view="desktop" aria-pressed="true">Desktop</button><button type="button" data-view="mobile" aria-pressed="false">Mobile</button></div></div></div>
+<div class="bar"><div><div class="crumbs"><a href="index.html">Locate wireframes</a></div><h1>Directory search: desktop</h1></div><div class="toggles"><button class="plain" id="notes-toggle" type="button">Hide notes</button></div></div>
 <div class="stage"><div class="frame">
 <div class="site">
 <a class="skip" href="#main">Skip to content</a>
 <div class="sample">Wireframe with sample data. Holders, dates, counts and contact details are illustrative and have not been checked.</div>
 <div class="site-inner">
 <header class="hdr"><div class="wrap">
-  <a class="logo" href="01-homepage.html" data-keepview><span class="mark">LOGO</span><span><b>Locate: care and adoption records</b><small>Find who holds records about you, and how to ask for them</small></span></a>
-  <div class="hdr-actions"><a class="btn small hide-m" href="#">Get support</a><a class="btn exit" href="#">✕ Quick exit</a><button class="btn menu-btn" type="button">Menu</button></div>
+  <a class="logo" href="home-desktop.html" data-keepview><span class="mark">LOGO</span><span><b>Locate: care and adoption records</b><small>Find who holds records about you, and how to ask for them</small></span></a>
+  <div class="hdr-actions"><a class="btn small hide-m" href="#">Get support</a><a class="btn exit" href="#">✕ Quick exit</a><a class="pin" href="#note-G1" aria-label="Note G1">G1</a><button class="btn menu-btn" type="button">Menu</button></div>
 </div></header>
 <nav class="nav" aria-label="Main"><div class="wrap"><ul><li><a href="#">About</a></li><li><a href="#" aria-current="page">Locate your records</a></li><li><a href="#">Getting your records</a></li><li><a href="#">Your rights</a></li><li><a href="#">Find support</a></li><li><a href="#">For record holders</a></li></ul></div></nav>
 <a class="support-tab" href="#">Need support?</a>
 <main id="main">
 <div class="wrap">
-  <p class="crumb"><a href="01-homepage.html" data-keepview>Home</a> › Locate your records</p>
+  <p class="crumb"><a href="home-desktop.html" data-keepview>Home</a> › Locate your records</p>
   <div class="side-r">
     <div class="stack-lg">
       <div class="stack">
         <h1>Locate your records</h1>
-        <p class="lede">Search for the home, agency or council connected with your care or adoption. Start with what you know: names, places, organisations and approximate dates.</p>
+        <p class="lede">Search for the home, agency or council connected with your care or adoption. Start with what you know: names, places, organisations and approximate dates.<a class="pin" href="#note-1" aria-label="Note 1">1</a></p>
       </div>
       <form class="search box strong" role="search" onsubmit="return false" style="padding:24px">
-        <label for="q-dir">Name of a home, organisation or place</label>
+        <label for="q-dir">Name of a home, organisation or place<a class="pin" href="#note-2" aria-label="Note 2">2</a></label>
         <div class="field" id="q-dir">For example 'Putney', 'Barnsley' or 'Deaneries'</div>
         <p class="hint">We search current and former names, places and descriptions. Part of a word is fine.</p>
-        <p style="font-weight:700;margin-top:10px">Narrow it down (optional)</p>
+        <p style="font-weight:700;margin-top:10px">Narrow it down (optional)<a class="pin" href="#note-3" aria-label="Note 3">3</a></p>
         <div class="opt">
           <div class="f">Area<div class="field sm">Town, county or council</div></div>
           <div class="f">Roughly when<div class="field sm">Year or decade, e.g. 1960s</div></div>
           <div class="f">Type<div class="field sm">Any type ▾</div></div>
         </div>
-        <div class="row" style="margin-top:8px"><a class="btn primary" href="03-search-results.html" data-keepview style="min-height:56px">Search the directory</a></div>
+        <div class="row" style="margin-top:8px"><a class="btn primary" href="#" data-keepview style="min-height:56px">Search the directory</a></div>
       </form>
 
       <section class="stack">
-        <h2>Or browse</h2>
+        <h2>Or browse<a class="pin" href="#note-4" aria-label="Note 4">4</a></h2>
         <div class="grid2">
           <div class="box stack"><h3>By type</h3><ul class="small" style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px">
             <li><a href="#">Mother and baby homes</a> <span class="muted">(000)</span></li><li><a href="#">Children's homes and nurseries</a> <span class="muted">(000)</span></li><li><a href="#">Adoption agencies and societies</a> <span class="muted">(000)</span></li><li><a href="#">Local authorities</a> <span class="muted">(000)</span></li><li><a href="#">Archives and other record holders</a> <span class="muted">(000)</span></li></ul></div>
@@ -280,13 +279,13 @@ p{margin:0}
       <div class="box fill stack">
         <h2 style="font-size:20px">Before you search</h2>
         <ul class="small" style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px">
-          <li>The directory lists places and organisations, not people. You can't search for a person's records here.</li>
+          <li>The directory lists places and organisations, not people. You can't search for a person's records here.<a class="pin" href="#note-5" aria-label="Note 5">5</a></li>
           <li>An entry helps you identify who to contact, but does not confirm that your individual records exist.</li>
           <li>The directory is not complete. Not every organisation has sent us its details yet.</li>
-          <li>If you have your birth certificate, look at the place of birth and your birth mother's address. Those places are good things to search for.</li>
+          <li>If you have your birth certificate, look at the place of birth and your birth mother's address. Those places are good things to search for.<a class="pin" href="#note-7" aria-label="Note 7">7</a></li>
         </ul>
       </div>
-      <div class="box stack"><h3>Not sure where to start?</h3><p class="small muted">Read about what records might exist and who might hold them.</p><a class="small" href="#">Care records: where to start</a><a class="small" href="#">Adoption records: where to start</a></div>
+      <div class="box stack"><h3>Not sure where to start?</h3><p class="small muted">Read about what records might exist and who might hold them.</p><a class="small" href="#">Care records: where to start</a><a class="small" href="#">Adoption records: where to start</a><a class="pin" href="#note-6" aria-label="Note 6">6</a></div>
     </aside>
   </div>
 </div>
@@ -301,28 +300,13 @@ p{margin:0}
 </div>
 </div></div></div>
 <nav class="pagenav" aria-label="Screens">
-<span><a href="01-homepage.html" data-keepview>← Homepage</a></span>
-<span><a href="03-search-results.html" data-keepview>Directory: search results →</a></span></nav>
-
+<span><a href="home-mobile.html">← Homepage, mobile</a></span>
+<span><a href="search-mobile.html">Directory search, mobile →</a></span></nav>
+<section class="notes" aria-label="Annotations"><h2>Notes for this screen</h2>
+<p class="legend"><span class="tag decision">Workshop decision</span> agreed at the 24 Nov workshop or in the brief <span class="tag client">Client copy</span> wording taken from the November content <span class="tag guess">Guess</span> our assumption, to check <span class="tag open">Open question</span> still to be decided</p>
+<ol><li id="note-1"><span class="pin">1</span><span><span class="tag client">Client copy</span>Intro adapted from 'Where to start': 'Start with what you know: names, places, organisations and approximate dates.'</span></li><li id="note-2"><span class="pin">2</span><span><span class="tag decision">Workshop decision</span>Same single box as the homepage. It searches current names, former names, places and description text, with partial matches ('Browning' finds Browning House).</span></li><li id="note-3"><span class="pin">3</span><span><span class="tag decision">Workshop decision</span>Optional filters for area, date and type, matching the workshop's 'which agencies were operating then' need. They never block a search. The type list needs the dataset's real categories.</span></li><li id="note-4"><span class="pin">4</span><span><span class="tag guess">Guess</span>Browse routes for people who don't know what to type. Counts are placeholders until we have the data.</span></li><li id="note-5"><span class="pin">5</span><span><span class="tag open">Open question</span>No dedicated search by a person's name (a data protection decision in the CALGG plan). But the current site's Staff member search is the only way to solve the Miss Crabtree / Four Deaneries request. Full-text search may still match worker names in descriptions. Needs a deliberate decision.</span></li><li id="note-6"><span class="pin">6</span><span><span class="tag decision">Workshop decision</span>Guidance is offered but never required before searching. Care and adoption guidance are kept separate.</span></li><li id="note-7"><span class="pin">7</span><span><span class="tag guess">Guess</span>Birth certificate tip from the workshop, repeated here because many people land on this page directly rather than coming from the homepage.</span></li><li id="note-G1"><span class="pin">G1</span><span><span class="tag decision">Workshop decision</span>Quick exit and support on every page. Desktop: header button plus a side tab. Mobile: a bar fixed to the bottom of the screen. Quick exit should replace the page and clear it from history. The site tree note asks for 'Exit, support and pins on sidebar'. We've read 'pins' as map pins, which needs checking.</span></li></ol></section>
 </div>
-<script>
-(function(){
-  var frame=document.querySelector('.frame');
-  var btns=document.querySelectorAll('[data-view]');
-  function set(v){
-    frame.classList.toggle('mobile',v==='mobile');
-    btns.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.view===v));});
-    try{ if(history.replaceState){history.replaceState(null,'',v==='mobile'?'#mobile':'#desktop');} }catch(e){}
-    document.querySelectorAll('a[data-keepview]').forEach(function(a){a.href=a.getAttribute('href').split('#')[0]+'#'+v;});
-  }
-  btns.forEach(function(b){b.addEventListener('click',function(){set(b.dataset.view);});});
-  set(location.hash==='#mobile'?'mobile':'desktop');
-  window.addEventListener('hashchange',function(){set(location.hash==='#mobile'?'mobile':'desktop');});
-  var nb=document.getElementById('notes-toggle');
-  if(nb){nb.addEventListener('click',function(){var h=document.body.classList.toggle('hide-notes');nb.textContent=h?'Show notes':'Hide notes';});}
-  // stop wireframe links/forms navigating anywhere real
-  document.querySelectorAll('.site a[href="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();});});
-})();
-</script>
+<script>(function(){var nb=document.getElementById('notes-toggle');if(nb){nb.addEventListener('click',function(){var h=document.body.classList.toggle('hide-notes');nb.textContent=h?'Show notes':'Hide notes';});}
+document.querySelectorAll('.site a[href="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();});});})();</script>
 </body>
 </html>

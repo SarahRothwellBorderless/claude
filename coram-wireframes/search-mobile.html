@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Directory search (mobile) · Locate wireframes</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+:root{
+  /* Low-fi wireframe: greyscale page, yellow annotation layer. Deliberately single (light) theme. */
+  --ink:#1d2126; --mid:#5a626c; --soft:#8a929c; --line:#c5cbd2; --fill:#eef0f3; --fill2:#dde1e6;
+  --paper:#ffffff; --canvas:#d9dde2; --pin:#f4c430; --pin-ink:#3a2c00;
+  --t-decision:#1f5fa8; --t-client:#2d7a46; --t-guess:#b3541e; --t-open:#7a3fa0;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono: ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html,body{background:var(--canvas);color:var(--ink);font-family:var(--sans);margin:0}
+a{color:inherit}
+/* ---------- viewer chrome ---------- */
+.viewer{padding-block:16px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;max-width:1280px;margin:0 auto 14px}
+.bar h1{font-size:15px;margin:0;font-weight:600}
+.bar .crumbs{font-size:13px;color:var(--mid)}
+.bar .crumbs a{color:var(--ink)}
+.seg{display:inline-flex;border:1px solid var(--ink);border-radius:6px;overflow:hidden}
+.seg button{font:inherit;font-size:13px;padding:6px 12px;border:0;background:var(--paper);color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.seg button:focus-visible,.toggles button:focus-visible{outline:3px solid var(--pin);outline-offset:1px}
+.toggles{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.toggles .plain{font:inherit;font-size:13px;padding:6px 12px;border:1px solid var(--ink);border-radius:6px;background:var(--paper);cursor:pointer}
+.stage{overflow-x:auto;padding-bottom:8px}
+.frame{container:site / inline-size;width:1280px;margin:0 auto;background:var(--paper);box-shadow:0 1px 0 var(--line),0 8px 30px rgba(0,0,0,.12);transition:width .2s}
+.frame.mobile{width:390px;border-radius:22px;overflow:hidden;border:10px solid #2a2e33}
+@media (prefers-reduced-motion: reduce){.frame{transition:none}}
+.hide-notes .pin{display:none}
+.pagenav{max-width:1280px;margin:18px auto 0;display:flex;justify-content:space-between;gap:12px;font-size:14px;flex-wrap:wrap}
+/* ---------- annotations ---------- */
+.pin{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:var(--pin);color:var(--pin-ink);font:700 12px/1 var(--sans);vertical-align:middle;margin-left:6px;align-self:flex-start;flex:none;width:fit-content;box-shadow:0 0 0 2px var(--paper);text-decoration:none}
+.notes{max-width:1280px;margin:22px auto 0;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:20px 24px}
+.notes h2{font-size:16px;margin:0 0 4px}
+.notes .legend{font-size:13px;color:var(--mid);margin:0 0 14px;display:flex;flex-wrap:wrap;gap:6px 14px}
+.notes ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:10px 24px}
+.notes li{display:grid;grid-template-columns:28px 1fr;gap:8px;font-size:14px;line-height:1.45;min-width:0}
+.notes li .pin{margin:0}
+.tag{display:inline-block;font:700 10.5px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;padding:3px 6px;border-radius:3px;color:#fff;margin-right:6px;vertical-align:1px}
+.tag.decision{background:var(--t-decision)}.tag.client{background:var(--t-client)}.tag.guess{background:var(--t-guess)}.tag.open{background:var(--t-open)}
+/* ---------- wireframe site ---------- */
+.site{font-size:17px;line-height:1.55;color:var(--ink)}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:40px}
+.sample{background:repeating-linear-gradient(45deg,var(--fill),var(--fill) 8px,var(--paper) 8px,var(--paper) 16px);border-bottom:1px solid var(--line);font-size:13px;text-align:center;padding:6px 12px;color:var(--mid)}
+.skip{position:absolute;left:-999px}
+.util{border-bottom:1px solid var(--line);font-size:14px}
+.util .wrap{display:flex;justify-content:flex-end;gap:20px;align-items:center;min-height:40px}
+.util a{color:var(--mid)}
+.hdr{border-bottom:2px solid var(--ink)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:84px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo .mark{width:44px;height:44px;border:2px solid var(--ink);display:grid;place-items:center;font:700 11px var(--mono);border-radius:4px}
+.logo b{display:block;font-size:19px;line-height:1.15}
+.logo small{display:block;font-size:13px;color:var(--mid)}
+.hdr-actions{display:flex;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border:2px solid var(--ink);border-radius:6px;background:var(--paper);color:var(--ink);font:600 16px var(--sans);text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn.exit{background:var(--fill2);border-style:solid}
+.btn.small{min-height:40px;padding:0 14px;font-size:15px}
+.menu-btn{display:none}
+.nav{border-bottom:1px solid var(--line);background:var(--fill)}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap}
+.nav a{display:block;padding:14px 16px;font-size:16px;text-decoration:none;border-bottom:4px solid transparent}
+.nav a[aria-current]{border-bottom-color:var(--ink);font-weight:700}
+.nav li:first-child a{padding-left:0}
+.support-tab{position:absolute;right:0;top:220px;writing-mode:vertical-rl;transform:rotate(180deg);background:var(--ink);color:var(--paper);padding:16px 10px;font-weight:600;font-size:15px;border-radius:0 6px 6px 0;text-decoration:none}
+.site-inner{position:relative}
+main{padding-block:40px 56px}
+h1,h2,h3{text-wrap:balance;line-height:1.2;margin:0}
+.site h1{font-size:40px}
+.site h2{font-size:28px}
+.site h3{font-size:20px}
+.lede{font-size:20px;color:var(--mid);max-width:44ch;margin:12px 0 0}
+p{margin:0}
+.stack{display:flex;flex-direction:column;gap:16px}
+.stack-lg{display:flex;flex-direction:column;gap:48px}
+.muted{color:var(--mid)}
+.small{font-size:15px}
+.box{border:1px solid var(--line);border-radius:6px;padding:20px}
+.box.fill{background:var(--fill);border-color:var(--fill2)}
+.box.strong{border:2px solid var(--ink)}
+.img{background:var(--fill2);display:grid;place-items:center;color:var(--soft);font:12px var(--mono);border-radius:4px;position:relative;overflow:hidden}
+.img::before,.img::after{content:"";position:absolute;inset:0;background:linear-gradient(to top right,transparent calc(50% - 1px),var(--line) 50%,transparent calc(50% + 1px))}
+.img::after{background:linear-gradient(to top left,transparent calc(50% - 1px),var(--line) 50%,transparent calc(50% + 1px))}
+.img span{position:relative;z-index:1;background:var(--fill2);padding:2px 6px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.side{display:grid;grid-template-columns:280px 1fr;gap:40px;align-items:start}
+.side-r{display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:start}
+.side > *, .side-r > *, .grid2 > *, .grid3 > *, .grid4 > *{min-width:0}
+/* search */
+.search{display:flex;flex-direction:column;gap:10px}
+.search label{font-weight:700;font-size:18px}
+.search .row{display:flex;gap:10px}
+.field{flex:1;min-height:60px;border:2px solid var(--ink);border-radius:6px;display:flex;align-items:center;padding:0 16px;color:var(--soft);font-size:18px;background:var(--paper)}
+.field.filled{color:var(--ink)}
+.field.sm{min-height:48px;font-size:16px}
+.search .btn{min-height:60px;padding:0 28px;font-size:18px}
+.hint{font-size:15px;color:var(--mid)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--ink);border-radius:999px;padding:6px 14px;font-size:15px;text-decoration:none;background:var(--paper)}
+.chip.on{background:var(--ink);color:var(--paper)}
+.disclose{font-weight:600;text-decoration:underline;font-size:16px}
+.opt{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.opt .f{display:flex;flex-direction:column;gap:6px;font-size:15px;font-weight:600}
+.hero{padding-block:48px;border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:start}
+.hero .wrap > *{min-width:0}
+.card{border:1px solid var(--line);border-radius:6px;padding:20px;display:flex;flex-direction:column;gap:8px;text-decoration:none;background:var(--paper)}
+.card h3 a{text-decoration:underline}
+.arrow::after{content:" →"}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{counter-increment:s;display:grid;grid-template-columns:48px 1fr;gap:16px}
+.steps li::before{content:counter(s);width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-weight:700}
+.list-tick{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.list-tick li{padding-left:28px;position:relative}
+.list-tick li::before{content:"✓";position:absolute;left:0;font-weight:700}
+.list-cross li::before{content:"✕"}
+.band{background:var(--fill);border-block:1px solid var(--fill2);padding-block:40px}
+.note-inline{border-left:4px solid var(--ink);background:var(--fill);padding:14px 18px;font-size:16px}
+.ftr{background:var(--ink);color:#e7eaee;padding-block:40px;font-size:15px}
+.ftr a{color:#e7eaee}
+.ftr .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px}
+.ftr ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.ftr h3{font-size:16px;margin-bottom:10px}
+.mobile-support{display:none}
+/* results */
+.res-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px}
+.result{border:1px solid var(--line);border-radius:6px;padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+.result .type{font:600 12px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--mid)}
+.result h3{font-size:22px}
+.result h3 a{text-decoration:underline}
+.meta{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:15px;color:var(--mid)}
+.chain{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.chain > div{padding:12px 16px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.chain > div + div{border-left:1px solid var(--line);background:var(--fill)}
+.chain .k{font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--mid)}
+.status{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;padding:3px 10px;border-radius:999px;width:fit-content}
+.status.confirmed{background:var(--ink);color:var(--paper)}
+.status.confirmed::before{content:"✓"}
+.status.possible{border:2px dashed var(--ink);padding:1px 8px}
+.status.possible::before{content:"?"}
+.matched{font-size:14px;color:var(--mid)}
+.matched mark{background:var(--fill2);color:var(--ink);padding:0 2px}
+.filters{display:flex;flex-direction:column;gap:20px}
+.filters fieldset{border:0;border-top:1px solid var(--line);padding:16px 0 0;margin:0;display:flex;flex-direction:column;gap:8px}
+.filters legend{font-weight:700;padding:0;margin-bottom:6px}
+.cb{display:flex;gap:10px;align-items:center;font-size:16px}
+.cb i{width:22px;height:22px;border:2px solid var(--ink);border-radius:3px;flex:none;display:grid;place-items:center;font-style:normal;font-size:14px;font-weight:700}
+.filters-btn{display:none}
+.crumb{font-size:15px;color:var(--mid);margin-bottom:18px}
+.crumb a{color:var(--ink)}
+.kv{display:grid;grid-template-columns:140px 1fr;gap:6px 16px;font-size:16px;margin:0}
+.kv dt{font-weight:700}
+.kv dd{margin:0;min-width:0}
+.det{border:1px solid var(--line);border-radius:6px}
+.det summary{padding:16px 20px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+.det summary::after{content:"+";font-size:22px;line-height:1}
+.det[open] summary::after{content:"–"}
+.det .in{padding:0 20px 18px}
+.tabs{display:flex;border-bottom:2px solid var(--ink)}
+.tabs span{padding:10px 18px;font-weight:600;border:1px solid var(--line);border-bottom:0;border-radius:6px 6px 0 0;margin-right:4px;background:var(--fill)}
+.tabs span.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.flow{display:grid;grid-template-columns:1fr 32px 1fr 32px 1fr;align-items:stretch}
+.flow .n{border:2px solid var(--ink);border-radius:6px;padding:12px 14px;font-size:15px;min-width:0}
+.flow .n.dash{border-style:dashed}
+.flow .n b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mid)}
+.flow .a{display:grid;place-items:center;font-size:22px}
+.toggle-view{display:inline-flex;border:2px solid var(--ink);border-radius:6px;overflow:hidden}
+.toggle-view span{padding:8px 18px;font-weight:600}
+.toggle-view span.on{background:var(--ink);color:var(--paper)}
+.pager{display:flex;gap:8px;align-items:center;font-size:16px}
+.pager span{min-width:40px;height:40px;border:1px solid var(--line);display:grid;place-items:center;border-radius:4px}
+.pager span.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.dym{border:2px solid var(--ink);border-radius:6px;padding:20px 22px}
+
+/* =============== MOBILE (container) =============== */
+@container site (max-width: 640px){
+  .site{font-size:17px}
+  .wrap{padding-inline:18px}
+  .util{display:none}
+  .hdr .wrap{min-height:64px;gap:8px}
+  .logo .mark{width:34px;height:34px;font-size:9px}
+  .logo b{font-size:15px}
+  .logo small{display:none}
+  .hdr-actions .hide-m{display:none}
+  .btn.exit{min-height:44px;padding:0 12px;font-size:15px}
+  .menu-btn{display:inline-flex;min-height:44px;padding:0 12px;font-size:15px}
+  .nav{display:none}
+  .support-tab{display:none}
+  .mobile-support{display:flex;position:sticky;bottom:0;z-index:5;background:var(--paper);border-top:2px solid var(--ink);padding:10px 18px;gap:10px}
+  .mobile-support .btn{flex:1;min-height:48px}
+  main{padding-block:24px 40px}
+  .site h1{font-size:30px}
+  .site h2{font-size:24px}
+  .lede{font-size:18px}
+  .hero{padding-block:28px}
+  .hero .wrap{grid-template-columns:1fr;gap:28px}
+  .search .row{flex-direction:column}
+  .search .btn{width:100%}
+  .opt{grid-template-columns:1fr}
+  .grid2,.grid3,.grid4{grid-template-columns:1fr;gap:14px}
+  .side,.side-r{grid-template-columns:1fr;gap:24px}
+  .side > .filters{display:none}
+  .filters-btn{display:flex}
+  .chain{grid-template-columns:1fr}
+  .chain > div + div{border-left:0;border-top:1px solid var(--line)}
+  .result{padding:16px}
+  .result h3{font-size:20px}
+  .kv{grid-template-columns:1fr;gap:0}
+  .kv dd{margin-bottom:10px}
+  .flow{grid-template-columns:1fr;gap:0}
+  .flow .a{transform:rotate(90deg);height:32px}
+  .ftr .cols{grid-template-columns:1fr}
+  .res-head{align-items:start}
+  .tabs span{padding:10px 12px;font-size:15px}
+  .order-m-first{order:-1}
+}
+</style>
+</head>
+<body>
+<div class="viewer">
+<div class="bar"><div><div class="crumbs"><a href="index.html">Locate wireframes</a></div><h1>Directory search: mobile</h1></div><div class="toggles"><button class="plain" id="notes-toggle" type="button">Hide notes</button></div></div>
+<div class="stage"><div class="frame mobile">
+<div class="site">
+<a class="skip" href="#main">Skip to content</a>
+<div class="sample">Wireframe with sample data. Holders, dates, counts and contact details are illustrative and have not been checked.</div>
+<div class="site-inner">
+<header class="hdr"><div class="wrap">
+  <a class="logo" href="home-mobile.html" data-keepview><span class="mark">LOGO</span><span><b>Locate: care and adoption records</b><small>Find who holds records about you, and how to ask for them</small></span></a>
+  <div class="hdr-actions"><a class="btn small hide-m" href="#">Get support</a><a class="btn exit" href="#">✕ Quick exit</a><a class="pin" href="#note-G1" aria-label="Note G1">G1</a><button class="btn menu-btn" type="button">Menu</button></div>
+</div></header>
+<nav class="nav" aria-label="Main"><div class="wrap"><ul><li><a href="#">About</a></li><li><a href="#" aria-current="page">Locate your records</a></li><li><a href="#">Getting your records</a></li><li><a href="#">Your rights</a></li><li><a href="#">Find support</a></li><li><a href="#">For record holders</a></li></ul></div></nav>
+<a class="support-tab" href="#">Need support?</a>
+<main id="main">
+<div class="wrap">
+  <p class="crumb"><a href="home-mobile.html" data-keepview>Home</a> › Locate your records</p>
+  <div class="side-r">
+    <div class="stack-lg">
+      <div class="stack">
+        <h1>Locate your records</h1>
+        <p class="lede">Search for the home, agency or council connected with your care or adoption. Start with what you know: names, places, organisations and approximate dates.<a class="pin" href="#note-1" aria-label="Note 1">1</a></p>
+      </div>
+      <form class="search box strong" role="search" onsubmit="return false" style="padding:24px">
+        <label for="q-dir">Name of a home, organisation or place<a class="pin" href="#note-2" aria-label="Note 2">2</a></label>
+        <div class="field" id="q-dir">For example 'Putney', 'Barnsley' or 'Deaneries'</div>
+        <p class="hint">We search current and former names, places and descriptions. Part of a word is fine.</p>
+        <p style="font-weight:700;margin-top:10px">Narrow it down (optional)<a class="pin" href="#note-3" aria-label="Note 3">3</a></p>
+        <div class="opt">
+          <div class="f">Area<div class="field sm">Town, county or council</div></div>
+          <div class="f">Roughly when<div class="field sm">Year or decade, e.g. 1960s</div></div>
+          <div class="f">Type<div class="field sm">Any type ▾</div></div>
+        </div>
+        <div class="row" style="margin-top:8px"><a class="btn primary" href="#" data-keepview style="min-height:56px">Search the directory</a></div>
+      </form>
+
+      <section class="stack">
+        <h2>Or browse<a class="pin" href="#note-4" aria-label="Note 4">4</a></h2>
+        <div class="grid2">
+          <div class="box stack"><h3>By type</h3><ul class="small" style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px">
+            <li><a href="#">Mother and baby homes</a> <span class="muted">(000)</span></li><li><a href="#">Children's homes and nurseries</a> <span class="muted">(000)</span></li><li><a href="#">Adoption agencies and societies</a> <span class="muted">(000)</span></li><li><a href="#">Local authorities</a> <span class="muted">(000)</span></li><li><a href="#">Archives and other record holders</a> <span class="muted">(000)</span></li></ul></div>
+          <div class="box stack"><h3>By area</h3><ul class="small" style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px">
+            <li><a href="#">England</a>: <a href="#">London</a>, <a href="#">South East</a>, <a href="#">North West</a> … </li><li><a href="#">Wales</a></li><li><a href="#">Scotland</a></li><li><a href="#">Northern Ireland</a></li></ul>
+            <a class="btn small" href="#" style="width:fit-content">Browse on a map</a></div>
+        </div>
+      </section>
+    </div>
+
+    <aside class="stack" style="gap:20px">
+      <div class="box fill stack">
+        <h2 style="font-size:20px">Before you search</h2>
+        <ul class="small" style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px">
+          <li>The directory lists places and organisations, not people. You can't search for a person's records here.<a class="pin" href="#note-5" aria-label="Note 5">5</a></li>
+          <li>An entry helps you identify who to contact, but does not confirm that your individual records exist.</li>
+          <li>The directory is not complete. Not every organisation has sent us its details yet.</li>
+          <li>If you have your birth certificate, look at the place of birth and your birth mother's address. Those places are good things to search for.<a class="pin" href="#note-7" aria-label="Note 7">7</a></li>
+        </ul>
+      </div>
+      <div class="box stack"><h3>Not sure where to start?</h3><p class="small muted">Read about what records might exist and who might hold them.</p><a class="small" href="#">Care records: where to start</a><a class="small" href="#">Adoption records: where to start</a><a class="pin" href="#note-6" aria-label="Note 6">6</a></div>
+    </aside>
+  </div>
+</div>
+</main>
+<footer class="ftr"><div class="wrap cols">
+  <div class="stack"><b>Locate: care and adoption records</b><p>Developed by CoramBAAF, UCL and CALGG with an advisory group of care experienced and adopted people.</p><p>[Partner logos]</p></div>
+  <div><h3>This website</h3><ul><li><a href="#">About</a></li><li><a href="#">Language glossary</a></li><li><a href="#">Feedback</a></li></ul></div>
+  <div><h3>Help</h3><ul><li><a href="#">Find support</a></li><li><a href="#">Accessibility and alternative formats</a></li><li><a href="#">Contact us</a></li></ul></div>
+  <div><h3>Legal</h3><ul><li><a href="#">Privacy notice</a></li><li><a href="#">Cookies</a></li></ul></div>
+</div></footer>
+<div class="mobile-support"><a class="btn" href="#">Get support</a><a class="btn exit" href="#">✕ Quick exit</a></div>
+</div>
+</div></div></div>
+<nav class="pagenav" aria-label="Screens">
+<span><a href="search-desktop.html">← Directory search, desktop</a></span>
+<span><a href="index.html">All screens →</a></span></nav>
+<section class="notes" aria-label="Annotations"><h2>Notes for this screen</h2>
+<p class="legend"><span class="tag decision">Workshop decision</span> agreed at the 24 Nov workshop or in the brief <span class="tag client">Client copy</span> wording taken from the November content <span class="tag guess">Guess</span> our assumption, to check <span class="tag open">Open question</span> still to be decided</p>
+<ol><li id="note-1"><span class="pin">1</span><span><span class="tag client">Client copy</span>Intro adapted from 'Where to start': 'Start with what you know: names, places, organisations and approximate dates.'</span></li><li id="note-2"><span class="pin">2</span><span><span class="tag decision">Workshop decision</span>Same single box as the homepage. It searches current names, former names, places and description text, with partial matches ('Browning' finds Browning House).</span></li><li id="note-3"><span class="pin">3</span><span><span class="tag decision">Workshop decision</span>Optional filters for area, date and type, matching the workshop's 'which agencies were operating then' need. They never block a search. The type list needs the dataset's real categories.</span></li><li id="note-4"><span class="pin">4</span><span><span class="tag guess">Guess</span>Browse routes for people who don't know what to type. Counts are placeholders until we have the data.</span></li><li id="note-5"><span class="pin">5</span><span><span class="tag open">Open question</span>No dedicated search by a person's name (a data protection decision in the CALGG plan). But the current site's Staff member search is the only way to solve the Miss Crabtree / Four Deaneries request. Full-text search may still match worker names in descriptions. Needs a deliberate decision.</span></li><li id="note-6"><span class="pin">6</span><span><span class="tag decision">Workshop decision</span>Guidance is offered but never required before searching. Care and adoption guidance are kept separate.</span></li><li id="note-7"><span class="pin">7</span><span><span class="tag guess">Guess</span>Birth certificate tip from the workshop, repeated here because many people land on this page directly rather than coming from the homepage.</span></li><li id="note-G1"><span class="pin">G1</span><span><span class="tag decision">Workshop decision</span>Quick exit and support on every page. Desktop: header button plus a side tab. Mobile: a bar fixed to the bottom of the screen. Quick exit should replace the page and clear it from history. The site tree note asks for 'Exit, support and pins on sidebar'. We've read 'pins' as map pins, which needs checking.</span></li></ol></section>
+</div>
+<script>(function(){var nb=document.getElementById('notes-toggle');if(nb){nb.addEventListener('click',function(){var h=document.body.classList.toggle('hide-notes');nb.textContent=h?'Show notes':'Hide notes';});}
+document.querySelectorAll('.site a[href="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();});});})();</script>
+</body>
+</html>
