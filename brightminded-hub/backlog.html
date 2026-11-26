@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=1440">
+<title>Backlog and sprints – BrightMinded Hub</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
+:root{
+  /* BrightMinded Hub tokens. Swap these for the exact brand values. */
+  --navy:#14213D; --navy-2:#22335A; --navy-3:#9FB0D3;
+  --sun:#FFC531; --sun-soft:#FFF4D1; --sun-ink:#5A4200;
+  --ink:#1B2430; --mid:#586374; --soft:#8A94A3; --line:#DDE2E9; --line-2:#EBEEF2;
+  --bg:#F2F4F7; --paper:#FFFFFF;
+  --teal:#0E7A6B; --teal-soft:#DCF1EC;
+  --red:#C2372C; --red-soft:#FBE4E1;
+  --blue:#2D58C8; --blue-soft:#E3EAFB;
+  --violet:#6A47BF; --violet-soft:#EDE6FA;
+  --orange:#B9561A; --orange-soft:#FCE9DC;
+  --font:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:14px;line-height:1.5}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+h1,h2,h3,h4,p{margin:0}
+.app{width:1440px;min-height:960px;margin:0 auto;display:flex;background:var(--bg)}
+/* sidebar */
+.side{width:248px;flex:none;background:var(--navy);color:#fff;padding:20px 14px;display:flex;flex-direction:column;gap:22px}
+.brand{display:flex;align-items:center;gap:10px;padding:4px 8px}
+.mark{width:32px;height:32px;border-radius:9px;background:var(--sun);display:flex;align-items:center;justify-content:center;flex:none}
+.mark svg{width:18px;height:18px}
+.brand b{display:block;font-size:15px;font-weight:800;letter-spacing:-.01em}
+.brand small{display:block;font-size:12px;color:var(--navy-3);font-weight:500;margin-top:-2px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;align-items:center;gap:11px;padding:8px 10px;border-radius:8px;color:#D6DEEE;font-weight:600;font-size:14px}
+.nav a svg{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.nav a:hover{background:var(--navy-2);color:#fff}
+.nav a.on{background:#fff;color:var(--navy)}
+.nav .count{margin-left:auto;background:var(--sun);color:var(--sun-ink);font-size:12px;font-weight:800;border-radius:20px;padding:0 8px;line-height:20px}
+.side h5{margin:0 0 6px;padding:0 10px;font-size:12px;font-weight:600;color:var(--navy-3)}
+.proj a{display:flex;align-items:center;gap:10px;padding:6px 10px;border-radius:8px;color:#D6DEEE;font-size:13.5px;font-weight:600}
+.proj a:hover{background:var(--navy-2)}
+.proj i{width:10px;height:10px;border-radius:3px;flex:none}
+.notetaker{margin-top:auto;background:var(--navy-2);border-radius:12px;padding:14px;font-size:13px;color:#D6DEEE}
+.notetaker b{color:#fff;display:flex;align-items:center;gap:8px;font-size:13.5px;margin-bottom:4px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--sun);display:inline-block;flex:none}
+.dot.live{background:#FF5A4E;box-shadow:0 0 0 3px rgba(255,90,78,.25)}
+/* main */
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.top{display:flex;align-items:center;gap:16px;padding:14px 32px;background:var(--paper);border-bottom:1px solid var(--line)}
+.search{flex:1;max-width:520px;display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:10px;padding:8px 12px;color:var(--soft);background:var(--bg)}
+.search svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+.search kbd{margin-left:auto;font:inherit;font-size:12px;border:1px solid var(--line);border-radius:5px;padding:0 6px;background:#fff}
+.top .spacer{flex:1}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--paper);border-radius:9px;padding:8px 14px;font-weight:700;font-size:13.5px;cursor:pointer;white-space:nowrap}
+.btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+.btn.primary{background:var(--navy);border-color:var(--navy);color:#fff}
+.btn.sun{background:var(--sun);border-color:var(--sun);color:var(--sun-ink)}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--mid)}
+.btn.danger{color:var(--red);border-color:#F0C4BF}
+.btn.sm{padding:5px 10px;font-size:12.5px;border-radius:7px}
+.av{width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:800;color:#fff;flex:none;border:2px solid var(--paper)}
+.av.s{width:24px;height:24px;font-size:10px}
+.av.l{width:40px;height:40px;font-size:14px}
+.stack{display:inline-flex}.stack .av+.av{margin-left:-8px}
+.content{padding:28px 32px 48px;display:flex;flex-direction:column;gap:24px}
+.head{display:flex;align-items:flex-end;gap:16px}
+.head .titles{flex:1}
+.head h1{font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.2}
+.head p{color:var(--mid);margin-top:4px;font-size:14.5px}
+.crumb{font-size:13px;color:var(--mid);margin-bottom:6px;font-weight:600}
+.crumb a{color:var(--blue)}
+.grid{display:grid;gap:20px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px}
+.panel>header{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line-2)}
+.panel>header h2{font-size:15.5px;font-weight:800;flex:1}
+.panel>header .meta{color:var(--mid);font-size:13px}
+.panel .body{padding:18px 20px}
+.muted{color:var(--mid)}.soft{color:var(--soft)}
+.small{font-size:12.5px}
+.row{display:flex;align-items:center;gap:12px}
+.list>*{border-top:1px solid var(--line-2)}
+.list>*:first-child{border-top:0}
+.tag{display:inline-flex;align-items:center;gap:5px;border-radius:6px;padding:1px 8px;font-size:12px;font-weight:700;line-height:20px;white-space:nowrap}
+.t-task{background:var(--blue-soft);color:var(--blue)}
+.t-bug{background:var(--red-soft);color:var(--red)}
+.t-story{background:var(--teal-soft);color:var(--teal)}
+.t-decision{background:var(--violet-soft);color:var(--violet)}
+.t-follow{background:var(--orange-soft);color:var(--orange)}
+.t-risk{background:var(--sun-soft);color:var(--sun-ink)}
+.t-grey{background:var(--line-2);color:var(--mid)}
+.t-live{background:var(--red-soft);color:var(--red)}
+.key{font-weight:700;color:var(--mid);font-size:12.5px;font-variant-numeric:tabular-nums}
+.pts{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;border-radius:11px;background:var(--line-2);font-size:12px;font-weight:800;color:var(--mid);padding:0 6px}
+/* the signature: every item threads back to what was said */
+.src{border-left:3px solid var(--sun);background:var(--sun-soft);border-radius:0 10px 10px 0;padding:10px 14px;font-size:13.5px}
+.src q{display:block;quotes:none;color:var(--ink);font-weight:500}
+.src .from{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:6px;font-size:12.5px;color:var(--sun-ink);font-weight:600}
+.src .from a{text-decoration:underline;text-underline-offset:2px}
+.from-chip{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;color:var(--sun-ink);background:var(--sun-soft);border-radius:6px;padding:1px 7px;line-height:19px}
+.from-chip svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.2}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line)}
+.tabs a{padding:10px 14px;font-weight:700;color:var(--mid);border-bottom:3px solid transparent;margin-bottom:-1px}
+.tabs a.on{color:var(--ink);border-color:var(--navy)}
+.tabs a span{color:var(--soft);font-weight:600;margin-left:4px}
+.toggle{width:36px;height:20px;border-radius:10px;background:var(--line);display:inline-flex;align-items:center;padding:2px;flex:none}
+.toggle::after{content:"";width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(20,33,61,.25)}
+.toggle.on{background:var(--teal);justify-content:flex-end}
+.bar{height:8px;border-radius:4px;background:var(--line-2);display:flex;overflow:hidden}
+.bar i{display:block;height:100%}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:12.5px;color:var(--mid);font-weight:700;padding:10px 16px;border-bottom:1px solid var(--line)}
+td{padding:12px 16px;border-bottom:1px solid var(--line-2);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:12.5px;font-weight:700;color:var(--mid)}
+.input{border:1px solid var(--line);border-radius:9px;padding:9px 12px;background:var(--paper);display:flex;align-items:center;gap:8px}
+.check{width:18px;height:18px;border-radius:5px;border:2px solid var(--line);flex:none;display:inline-flex;align-items:center;justify-content:center}
+.check.on{background:var(--teal);border-color:var(--teal)}
+.check.on::after{content:"";width:8px;height:4px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
+.icon{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.plat{width:28px;height:28px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex:none}
+.p-teams{background:#4B53BC}.p-zoom{background:#2D8CFF}.p-meet{background:#0F9D58}.p-upload{background:var(--mid)}.p-phone{background:var(--orange)}
+</style></head>
+<body><div class="app">
+<aside class="side">
+  <div class="brand"><span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0-3.5 10.9V16h7v-2.1A6 6 0 0 0 12 3z" fill="#14213D"/><path d="M9.5 18.5h5M10.5 21h3" stroke="#14213D" stroke-width="2" stroke-linecap="round"/></svg></span><span><b>BrightMinded</b><small>Hub</small></span></div>
+  <nav class="nav" aria-label="Main"><a href="home.html"><svg class="" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a><a href="inbox.html"><svg class="" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l3-8h12l3 8v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M3 13h5l1 3h6l1-3h5"/></svg>Inbox<span class="count">7</span></a><a href="meetings.html"><svg class="" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>Meetings</a><a href="ask.html"><svg class="" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12z"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.3 2.4c-.5.2-.8.6-.8 1.1M12 16h.01"/></svg>Ask your calls</a><a href="board.html"><svg class="" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="11" rx="1.5"/><rect x="17" y="4" width="4" height="7" rx="1.5"/></svg>Boards</a><a href="backlog.html" class="on" aria-current="page"><svg class="" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Backlog and sprints</a><a href="client.html"><svg class="" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></svg>Clients</a><a href="automations.html"><svg class="" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3L5 14h6l-1 7 8-11h-6z"/></svg>Automations</a><a href="settings.html"><svg class="" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Settings</a></nav>
+  <div class="proj"><h5>Projects</h5>
+    <a href="board.html"><i style="background:#FFC531"></i>Member portal</a>
+    <a href="board.html"><i style="background:#5FC4B4"></i>CPD tracker</a>
+    <a href="board.html"><i style="background:#9DB4F0"></i>Events booking</a>
+    <a href="board.html"><i style="background:#E6A0C4"></i>Internal tools</a>
+  </div>
+  <div class="notetaker"><b><span class="dot live"></span>Claude is in 1 call</b>Taking notes in Harbourline sprint review. Joining 3 more meetings today.</div>
+</aside>
+<main class="main">
+  <div class="top">
+    <div class="search"><svg class="" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span>Search calls, tickets and decisions</span><kbd>Ctrl K</kbd></div>
+    <span class="spacer"></span>
+    <a class="btn" href="meetings.html"><svg class="" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>Upload a recording</a>
+    <a class="btn primary" href="inbox.html"><svg class="" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>New ticket</a>
+    <span class="av " style="background:#2D58C8" title="Sarah Rothwell">SR</span>
+  </div>
+  <div class="content">
+<div class="head"><div class="titles"><div class="crumb"><a href="#">Member portal</a></div><h1>Backlog and sprints</h1><p>Drag work into a sprint. Anything marked “From a call” links back to what the client actually said.</p></div>
+<a class="btn" href="#"><svg class="" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></svg>Filter</a><a class="btn primary" href="#"><svg class="" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Create sprint</a></div>
+<section class="panel"><header><h2>Sprint 14</h2><span class="tag t-story">Active</span><span class="meta">23 Nov to 4 Dec, 34 points</span><a class="btn sm" href="board.html">Open board</a></header>
+<table><tbody>
+<tr><td style="width:96px"><span class="key">HUB-201</span></td><td style="width:90px"><span class="tag t-story">Story</span></td><td><a href="ticket.html"><b>Renewals flow</b></a> <span class="from-chip"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>From a call</span></td><td style="width:140px"><span class="tag t-grey">Ready to release</span></td><td style="width:60px"><span class="av s" style="background:#6A47BF" title="Priya Shah">PS</span></td><td style="width:60px"><span class="pts">8</span></td></tr>
+<tr><td style="width:96px"><span class="key">HUB-210</span></td><td style="width:90px"><span class="tag t-story">Story</span></td><td><a href="ticket.html"><b>Renewal payment with saved card</b></a> <span class="from-chip"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>From a call</span></td><td style="width:140px"><span class="tag t-grey">In progress</span></td><td style="width:60px"><span class="av s" style="background:#6A47BF" title="Priya Shah">PS</span></td><td style="width:60px"><span class="pts">5</span></td></tr>
+<tr><td style="width:96px"><span class="key">HUB-207</span></td><td style="width:90px"><span class="tag t-story">Story</span></td><td><a href="ticket.html"><b>Member directory search</b></a> </td><td style="width:140px"><span class="tag t-grey">Code review</span></td><td style="width:60px"><span class="av s" style="background:#3B6E8F" title="Jonah Ellis">JE</span></td><td style="width:60px"><span class="pts">5</span></td></tr>
+<tr><td style="width:96px"><span class="key">HUB-204</span></td><td style="width:90px"><span class="tag t-story">Story</span></td><td><a href="ticket.html"><b>Member card design for app</b></a> <span class="from-chip"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>From a call</span></td><td style="width:140px"><span class="tag t-grey">QA</span></td><td style="width:60px"><span class="av s" style="background:#2D58C8" title="Sarah Rothwell">SR</span></td><td style="width:60px"><span class="pts">3</span></td></tr>
+<tr><td colspan="6" class="small muted">and 9 more</td></tr>
+</tbody></table></section>
+<section class="panel"><header><h2>Sprint 15</h2><span class="tag t-grey">Planning</span><span class="meta">7 Dec to 18 Dec</span>
+ <div style="width:220px"><div class="row small" style="justify-content:space-between"><span class="muted">Capacity</span><b>26 of 32 points</b></div><div class="bar" style="margin-top:4px"><i style="width:81%;background:var(--blue)"></i></div></div>
+ <a class="btn sm primary" href="#">Start sprint</a></header>
+<table><tbody>
+<tr><td style="width:96px"><span class="key">HUB-218</span></td><td style="width:90px"><span class="tag t-story">Story</span></td><td><a href="ticket.html"><b>Add Microsoft single sign-on to member login</b></a> <span class="from-chip"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>From a call</span></td><td style="width:140px"><span class="tag t-grey">To do</span></td><td style="width:60px"><span class="av s" style="background:#6A47BF" title="Priya Shah">PS</span></td><td style="width:60px"><span class="pts">8</span></td></tr>
+<tr><td style="width:96px"><span class="key">HUB-223</span></td><td style="width:90px"><span class="tag t-bug">Bug</span></td><td><a href="ticket.html"><b>Renewal reminder emails sent twice</b></a> <span class="from-chip"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>From a call</span></td><td style="width:140px"><span class="tag t-grey">To do</span></td><td style="width:60px"><span class="av s" style="background:#B9561A" title="Tom Reed">TR</span></td><td style="width:60px"><span class="pts">2</span></td></tr>
+<tr><td style="width:96px"><span class="key">HUB-219</span></td><td style="width:90px"><span class="tag t-story">Story</span></td><td><a href="ticket.html"><b>Members can update their address</b></a> </td><td style="width:140px"><span class="tag t-grey">To do</span></td><td style="width:60px"><span class="av s" style="background:#B9561A" title="Tom Reed">TR</span></td><td style="width:60px"><span class="pts">3</span></td></tr>
+<tr><td style="width:96px"><span class="key">HUB-216</span></td><td style="width:90px"><span class="tag t-story">Story</span></td><td><a href="ticket.html"><b>Android build of member app</b></a> <span class="from-chip"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>From a call</span></td><td style="width:140px"><span class="tag t-grey">To do</span></td><td style="width:60px"><span class="av s" style="background:#3B6E8F" title="Jonah Ellis">JE</span></td><td style="width:60px"><span class="pts">8</span></td></tr>
+<tr><td style="width:96px"><span class="key">HUB-217</span></td><td style="width:90px"><span class="tag t-task">Task</span></td><td><a href="ticket.html"><b>Push notifications for renewals</b></a> </td><td style="width:140px"><span class="tag t-grey">To do</span></td><td style="width:60px"><span class="av s" style="background:#3B6E8F" title="Jonah Ellis">JE</span></td><td style="width:60px"><span class="pts">5</span></td></tr>
+</tbody></table></section>
+<section class="panel"><header><h2>Backlog</h2><span class="meta">38 items, 2 added from calls today</span></header>
+<table><tbody>
+<tr><td style="width:96px"><span class="key">HUB-224</span></td><td style="width:90px"><span class="tag t-story">Story</span></td><td><a href="ticket.html"><b>Members can download a CPD certificate</b></a> <span class="from-chip"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>From a call</span></td><td style="width:140px"><span class="tag t-grey">To do</span></td><td style="width:60px"><span class="av s" style="background:#C2372C" title="Lucy Hart">LH</span></td><td style="width:60px"><span class="pts">3</span></td></tr>
+<tr><td style="width:96px"><span class="key">HUB-190</span></td><td style="width:90px"><span class="tag t-story">Story</span></td><td><a href="ticket.html"><b>Family membership type</b></a> <span class="from-chip"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>From a call</span></td><td style="width:140px"><span class="tag t-grey">To do</span></td><td style="width:60px"><span class="av s" style="background:#6A47BF" title="Priya Shah">PS</span></td><td style="width:60px"><span class="pts">8</span></td></tr>
+<tr><td style="width:96px"><span class="key">HUB-185</span></td><td style="width:90px"><span class="tag t-task">Task</span></td><td><a href="ticket.html"><b>Remove old membership import script</b></a> </td><td style="width:140px"><span class="tag t-grey">To do</span></td><td style="width:60px"><span class="av s" style="background:#3B6E8F" title="Jonah Ellis">JE</span></td><td style="width:60px"><span class="pts">1</span></td></tr>
+<tr><td style="width:96px"><span class="key">HUB-180</span></td><td style="width:90px"><span class="tag t-story">Story</span></td><td><a href="ticket.html"><b>Welsh language support</b></a> <span class="from-chip"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>From a call</span></td><td style="width:140px"><span class="tag t-grey">Needs detail</span></td><td style="width:60px"><span class="av s" style="background:#C2372C" title="Lucy Hart">LH</span></td><td style="width:60px"><span class="pts">13</span></td></tr>
+</tbody></table>
+<div class="body row" style="border-top:1px solid var(--line-2)"><a class="btn sm ghost" href="#"><svg class="" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Create issue</a></div></section></div>
+</main></div></body></html>
