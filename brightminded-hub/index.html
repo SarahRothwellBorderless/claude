@@ -1,75 +1,77 @@
-<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BrightMinded Hub – UI screens</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BrightMinded Hub – UI screens</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"><style>
 :root{
   /* BrightMinded Hub tokens. Swap these for the exact brand values. */
-  --navy:#14213D; --navy-2:#22335A; --navy-3:#9FB0D3;
-  --sun:#FFC531; --sun-soft:#FFF4D1; --sun-ink:#5A4200;
-  --ink:#1B2430; --mid:#586374; --soft:#8A94A3; --line:#DDE2E9; --line-2:#EBEEF2;
-  --bg:#F2F4F7; --paper:#FFFFFF;
-  --teal:#0E7A6B; --teal-soft:#DCF1EC;
-  --red:#C2372C; --red-soft:#FBE4E1;
-  --blue:#2D58C8; --blue-soft:#E3EAFB;
-  --violet:#6A47BF; --violet-soft:#EDE6FA;
-  --orange:#B9561A; --orange-soft:#FCE9DC;
-  --font:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  /* BrightMinded brand (from the BrightMinded design system): citrine, ink, teal, paper. Outfit. */
+  --navy:#0D0E0E; --navy-2:#222424; --navy-3:#A3A49F;
+  --sun:#EBFD5C; --sun-soft:#F5FDC2; --sun-ink:#1F454F;
+  --ink:#0D0E0E; --mid:#5A5B57; --soft:#8B8C86; --line:#D6D4CC; --line-2:#E4E2DA;
+  --bg:#EDECE6; --paper:#FFFFFF; --paper-2:#E4E2DA;
+  --teal:#1F454F; --teal-soft:#DCE8E8;
+  --red:#D11414; --red-soft:#FFE0E0;
+  --blue:#0D54BB; --blue-soft:#E1EBFA;
+  --violet:#6B55A0; --violet-soft:#ECE6F6;
+  --orange:#9A5A06; --orange-soft:#FDF0CF;
+  --font:"Outfit",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   color-scheme:light;
 }
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:14px;line-height:1.5}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:14.5px;line-height:1.5;letter-spacing:-.005em;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit}
-:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+:focus-visible{outline:3px solid rgba(24,106,222,.45);outline-offset:2px}
 h1,h2,h3,h4,p{margin:0}
 .app{width:1440px;min-height:960px;margin:0 auto;display:flex;background:var(--bg)}
 /* sidebar */
 .side{width:248px;flex:none;background:var(--navy);color:#fff;padding:20px 14px;display:flex;flex-direction:column;gap:22px}
-.brand{display:flex;align-items:center;gap:10px;padding:4px 8px}
+.brand{display:flex;align-items:center;gap:10px;padding:6px 10px 2px}
+.brand img{height:20px;width:auto;display:block}
 .mark{width:32px;height:32px;border-radius:9px;background:var(--sun);display:flex;align-items:center;justify-content:center;flex:none}
 .mark svg{width:18px;height:18px}
-.brand b{display:block;font-size:15px;font-weight:800;letter-spacing:-.01em}
-.brand small{display:block;font-size:12px;color:var(--navy-3);font-weight:500;margin-top:-2px}
+.brand small{display:inline-block;font-size:12.5px;color:var(--ink);background:var(--sun);font-weight:600;border-radius:3px;padding:0 7px;line-height:20px}
 .nav{display:flex;flex-direction:column;gap:2px}
-.nav a{display:flex;align-items:center;gap:11px;padding:8px 10px;border-radius:8px;color:#D6DEEE;font-weight:600;font-size:14px}
+.nav a{display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:3px;color:#D9D8D2;font-weight:500;font-size:15px}
 .nav a svg{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .nav a:hover{background:var(--navy-2);color:#fff}
-.nav a.on{background:#fff;color:var(--navy)}
-.nav .count{margin-left:auto;background:var(--sun);color:var(--sun-ink);font-size:12px;font-weight:800;border-radius:20px;padding:0 8px;line-height:20px}
+.nav a.on{background:var(--sun);color:var(--ink)}
+.nav a.on .count{background:var(--ink);color:var(--sun)}
+.nav .count{margin-left:auto;background:var(--sun);color:var(--ink);font-size:12px;font-weight:600;border-radius:20px;padding:0 8px;line-height:20px}
 .side h5{margin:0 0 6px;padding:0 10px;font-size:12px;font-weight:600;color:var(--navy-3)}
-.proj a{display:flex;align-items:center;gap:10px;padding:6px 10px;border-radius:8px;color:#D6DEEE;font-size:13.5px;font-weight:600}
+.proj a{display:flex;align-items:center;gap:10px;padding:6px 10px;border-radius:3px;color:#D9D8D2;font-size:14px;font-weight:500}
 .proj a:hover{background:var(--navy-2)}
 .proj i{width:10px;height:10px;border-radius:3px;flex:none}
-.notetaker{margin-top:auto;background:var(--navy-2);border-radius:12px;padding:14px;font-size:13px;color:#D6DEEE}
-.notetaker b{color:#fff;display:flex;align-items:center;gap:8px;font-size:13.5px;margin-bottom:4px}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--sun);display:inline-block;flex:none}
+.notetaker{margin-top:auto;background:var(--teal);border-radius:4px;padding:14px;font-size:13.5px;color:#D9E4E4}
+.notetaker b{color:var(--sun);font-weight:500;display:flex;align-items:center;gap:8px;font-size:13.5px;margin-bottom:4px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--teal);display:inline-block;flex:none}
 .dot.live{background:#FF5A4E;box-shadow:0 0 0 3px rgba(255,90,78,.25)}
 /* main */
 .main{flex:1;min-width:0;display:flex;flex-direction:column}
 .top{display:flex;align-items:center;gap:16px;padding:14px 32px;background:var(--paper);border-bottom:1px solid var(--line)}
-.search{flex:1;max-width:520px;display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:10px;padding:8px 12px;color:var(--soft);background:var(--bg)}
+.search{flex:1;max-width:520px;display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:3px;padding:8px 12px;color:var(--soft);background:var(--bg)}
 .search svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
-.search kbd{margin-left:auto;font:inherit;font-size:12px;border:1px solid var(--line);border-radius:5px;padding:0 6px;background:#fff}
+.search kbd{margin-left:auto;font:inherit;font-size:12px;border:1px solid var(--line);border-radius:3px;padding:0 6px;background:#fff}
 .top .spacer{flex:1}
-.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--paper);border-radius:9px;padding:8px 14px;font-weight:700;font-size:13.5px;cursor:pointer;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--ink);background:transparent;border-radius:3px;padding:9px 16px;font-weight:500;font-size:14.5px;cursor:pointer;white-space:nowrap}
 .btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
 .btn.primary{background:var(--navy);border-color:var(--navy);color:#fff}
 .btn.sun{background:var(--sun);border-color:var(--sun);color:var(--sun-ink)}
-.btn.ghost{border-color:transparent;background:transparent;color:var(--mid)}
-.btn.danger{color:var(--red);border-color:#F0C4BF}
-.btn.sm{padding:5px 10px;font-size:12.5px;border-radius:7px}
-.av{width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:800;color:#fff;flex:none;border:2px solid var(--paper)}
+.btn.ghost{border-color:transparent;text-decoration:underline;text-underline-offset:3px;background:transparent;color:var(--mid)}
+.btn.danger{color:var(--red);border-color:var(--red)}
+.btn.sm{padding:5px 11px;font-size:13.5px}
+.av{width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:600;color:#fff;flex:none;border:2px solid var(--paper)}
 .av.s{width:24px;height:24px;font-size:10px}
 .av.l{width:40px;height:40px;font-size:14px}
 .stack{display:inline-flex}.stack .av+.av{margin-left:-8px}
 .content{padding:28px 32px 48px;display:flex;flex-direction:column;gap:24px}
 .head{display:flex;align-items:flex-end;gap:16px}
 .head .titles{flex:1}
-.head h1{font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.2}
+.head h1{font-size:34px;font-weight:500;letter-spacing:-.035em;line-height:1.05}
 .head p{color:var(--mid);margin-top:4px;font-size:14.5px}
-.crumb{font-size:13px;color:var(--mid);margin-bottom:6px;font-weight:600}
-.crumb a{color:var(--blue)}
+.crumb{font-size:13.5px;color:var(--mid);margin-bottom:8px;font-weight:500}
+.crumb a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .grid{display:grid;gap:20px}
-.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:4px}
 .panel>header{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line-2)}
-.panel>header h2{font-size:15.5px;font-weight:800;flex:1}
+.panel>header h2{font-size:18px;font-weight:500;letter-spacing:-.02em;flex:1}
 .panel>header .meta{color:var(--mid);font-size:13px}
 .panel .body{padding:18px 20px}
 .muted{color:var(--mid)}.soft{color:var(--soft)}
@@ -77,27 +79,27 @@ h1,h2,h3,h4,p{margin:0}
 .row{display:flex;align-items:center;gap:12px}
 .list>*{border-top:1px solid var(--line-2)}
 .list>*:first-child{border-top:0}
-.tag{display:inline-flex;align-items:center;gap:5px;border-radius:6px;padding:1px 8px;font-size:12px;font-weight:700;line-height:20px;white-space:nowrap}
+.tag{display:inline-flex;align-items:center;gap:5px;border-radius:3px;padding:1px 8px;font-size:12.5px;font-weight:500;line-height:20px;white-space:nowrap}
 .t-task{background:var(--blue-soft);color:var(--blue)}
 .t-bug{background:var(--red-soft);color:var(--red)}
 .t-story{background:var(--teal-soft);color:var(--teal)}
 .t-decision{background:var(--violet-soft);color:var(--violet)}
 .t-follow{background:var(--orange-soft);color:var(--orange)}
-.t-risk{background:var(--sun-soft);color:var(--sun-ink)}
+.t-risk{background:var(--sun);color:var(--ink)}
 .t-grey{background:var(--line-2);color:var(--mid)}
 .t-live{background:var(--red-soft);color:var(--red)}
-.key{font-weight:700;color:var(--mid);font-size:12.5px;font-variant-numeric:tabular-nums}
-.pts{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;border-radius:11px;background:var(--line-2);font-size:12px;font-weight:800;color:var(--mid);padding:0 6px}
+.key{font-weight:500;color:var(--mid);font-size:12.5px;font-variant-numeric:tabular-nums}
+.pts{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;border-radius:11px;background:var(--line-2);font-size:12px;font-weight:600;color:var(--mid);padding:0 6px}
 /* the signature: every item threads back to what was said */
-.src{border-left:3px solid var(--sun);background:var(--sun-soft);border-radius:0 10px 10px 0;padding:10px 14px;font-size:13.5px}
+.src{background:var(--sun-soft);border-radius:4px;padding:11px 14px;font-size:14px}
 .src q{display:block;quotes:none;color:var(--ink);font-weight:500}
-.src .from{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:6px;font-size:12.5px;color:var(--sun-ink);font-weight:600}
+.src .from{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:6px;font-size:13px;color:var(--teal);font-weight:500}
 .src .from a{text-decoration:underline;text-underline-offset:2px}
-.from-chip{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;color:var(--sun-ink);background:var(--sun-soft);border-radius:6px;padding:1px 7px;line-height:19px}
+.from-chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--ink);background:var(--sun);border-radius:3px;padding:1px 7px;line-height:19px}
 .from-chip svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.2}
 .tabs{display:flex;gap:4px;border-bottom:1px solid var(--line)}
-.tabs a{padding:10px 14px;font-weight:700;color:var(--mid);border-bottom:3px solid transparent;margin-bottom:-1px}
-.tabs a.on{color:var(--ink);border-color:var(--navy)}
+.tabs a{padding:10px 14px;font-weight:500;font-size:15px;color:var(--mid);border-bottom:3px solid transparent;margin-bottom:-1px}
+.tabs a.on{color:var(--ink);border-color:var(--ink)}
 .tabs a span{color:var(--soft);font-weight:600;margin-left:4px}
 .toggle{width:36px;height:20px;border-radius:10px;background:var(--line);display:inline-flex;align-items:center;padding:2px;flex:none}
 .toggle::after{content:"";width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(20,33,61,.25)}
@@ -105,21 +107,21 @@ h1,h2,h3,h4,p{margin:0}
 .bar{height:8px;border-radius:4px;background:var(--line-2);display:flex;overflow:hidden}
 .bar i{display:block;height:100%}
 table{width:100%;border-collapse:collapse}
-th{text-align:left;font-size:12.5px;color:var(--mid);font-weight:700;padding:10px 16px;border-bottom:1px solid var(--line)}
+th{text-align:left;font-size:13px;color:var(--mid);font-weight:500;padding:10px 16px;border-bottom:1px solid var(--line)}
 td{padding:12px 16px;border-bottom:1px solid var(--line-2);vertical-align:middle}
 tr:last-child td{border-bottom:0}
 .field{display:flex;flex-direction:column;gap:6px}
-.field label{font-size:12.5px;font-weight:700;color:var(--mid)}
-.input{border:1px solid var(--line);border-radius:9px;padding:9px 12px;background:var(--paper);display:flex;align-items:center;gap:8px}
-.check{width:18px;height:18px;border-radius:5px;border:2px solid var(--line);flex:none;display:inline-flex;align-items:center;justify-content:center}
+.field label{font-size:13px;font-weight:500;color:var(--mid)}
+.input{border:1.5px solid var(--line);border-radius:3px;padding:9px 12px;background:var(--paper);display:flex;align-items:center;gap:8px}
+.check{width:18px;height:18px;border-radius:3px;border:1.5px solid var(--soft);flex:none;display:inline-flex;align-items:center;justify-content:center}
 .check.on{background:var(--teal);border-color:var(--teal)}
 .check.on::after{content:"";width:8px;height:4px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
 .icon{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.plat{width:28px;height:28px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex:none}
+.plat{width:28px;height:28px;border-radius:3px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff;flex:none}
 .p-teams{background:#4B53BC}.p-zoom{background:#2D8CFF}.p-meet{background:#0F9D58}.p-upload{background:var(--mid)}.p-phone{background:var(--orange)}
 
 .wrap{max-width:980px;margin:0 auto;padding:48px 24px}.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:28px}
-.cards a{display:block;padding:18px}.cards a:hover{border-color:var(--navy)}</style></head><body><div class="wrap">
-<div class="row" style="gap:12px"><span class="mark" style="width:44px;height:44px;border-radius:12px"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0-3.5 10.9V16h7v-2.1A6 6 0 0 0 12 3z" fill="#14213D"/><path d="M9.5 18.5h5M10.5 21h3" stroke="#14213D" stroke-width="2" stroke-linecap="round"/></svg></span><div><h1 style="font-size:28px;letter-spacing:-.02em">BrightMinded Hub</h1><p class="muted">UI screens, desktop 1440px. Each page imports into Figma separately with html.to.design.</p></div></div>
-<div class="cards"><a class="panel" href="home.html"><b style="font-size:15.5px">Home</b><p class="small muted" style="margin-top:4px">Live call, today’s meetings, actions waiting for review, sprint progress</p><p class="small" style="margin-top:10px;color:var(--blue);font-weight:700">home.html</p></a><a class="panel" href="inbox.html"><b style="font-size:15.5px">Inbox</b><p class="small muted" style="margin-top:4px">Actions Claude found in calls, each with the quote it came from, ready to approve onto a board</p><p class="small" style="margin-top:10px;color:var(--blue);font-weight:700">inbox.html</p></a><a class="panel" href="meetings.html"><b style="font-size:15.5px">Meetings</b><p class="small muted" style="margin-top:4px">Every recorded call, what’s coming up, and uploads for recordings and phone calls</p><p class="small" style="margin-top:10px;color:var(--blue);font-weight:700">meetings.html</p></a><a class="panel" href="meeting.html"><b style="font-size:15.5px">Meeting notes</b><p class="small muted" style="margin-top:4px">Summary, decisions, actions and the transcript of one call</p><p class="small" style="margin-top:10px;color:var(--blue);font-weight:700">meeting.html</p></a><a class="panel" href="ask.html"><b style="font-size:15.5px">Ask your calls</b><p class="small muted" style="margin-top:4px">Ask a question across all calls and get an answer with sources</p><p class="small" style="margin-top:10px;color:var(--blue);font-weight:700">ask.html</p></a><a class="panel" href="board.html"><b style="font-size:15.5px">Sprint board</b><p class="small muted" style="margin-top:4px">Kanban with the development flow: To do, In progress, Code review, QA, Ready to release, Done</p><p class="small" style="margin-top:10px;color:var(--blue);font-weight:700">board.html</p></a><a class="panel" href="backlog.html"><b style="font-size:15.5px">Backlog and sprints</b><p class="small muted" style="margin-top:4px">Plan sprints against capacity and pull work from the backlog</p><p class="small" style="margin-top:10px;color:var(--blue);font-weight:700">backlog.html</p></a><a class="panel" href="ticket.html"><b style="font-size:15.5px">Ticket</b><p class="small muted" style="margin-top:4px">A story with its source quotes, acceptance criteria, status, GitHub branch and activity</p><p class="small" style="margin-top:10px;color:var(--blue);font-weight:700">ticket.html</p></a><a class="panel" href="client.html"><b style="font-size:15.5px">Client</b><p class="small muted" style="margin-top:4px">Everything about one client: promises we made, decisions, projects and calls</p><p class="small" style="margin-top:10px;color:var(--blue);font-weight:700">client.html</p></a><a class="panel" href="automations.html"><b style="font-size:15.5px">Automations</b><p class="small muted" style="margin-top:4px">Rules for what happens after a call, with a step-by-step editor</p><p class="small" style="margin-top:10px;color:var(--blue);font-weight:700">automations.html</p></a><a class="panel" href="settings.html"><b style="font-size:15.5px">Settings</b><p class="small muted" style="margin-top:4px">When Claude records, consent wording, retention, integrations and the workflow</p><p class="small" style="margin-top:10px;color:var(--blue);font-weight:700">settings.html</p></a></div>
+.cards a{display:block;padding:18px}.cards a:hover{border-color:var(--ink)}</style></head><body><div class="wrap">
+<div><div><img src="img/brightminded-black.png" alt="BrightMinded" style="height:26px;margin-bottom:24px"><h1 style="font-size:44px;font-weight:500;letter-spacing:-.04em">Hub UI screens</h1><p class="muted">UI screens, desktop 1440px. Each page imports into Figma separately with html.to.design.</p></div></div>
+<div class="cards"><a class="panel" href="home.html"><b style="font-size:18px;font-weight:500;letter-spacing:-.02em">Home</b><p class="small muted" style="margin-top:4px">Live call, today’s meetings, actions waiting for review, sprint progress</p><p class="small" style="margin-top:10px;font-weight:500;text-decoration:underline">home.html</p></a><a class="panel" href="inbox.html"><b style="font-size:18px;font-weight:500;letter-spacing:-.02em">Inbox</b><p class="small muted" style="margin-top:4px">Actions Claude found in calls, each with the quote it came from, ready to approve onto a board</p><p class="small" style="margin-top:10px;font-weight:500;text-decoration:underline">inbox.html</p></a><a class="panel" href="meetings.html"><b style="font-size:18px;font-weight:500;letter-spacing:-.02em">Meetings</b><p class="small muted" style="margin-top:4px">Every recorded call, what’s coming up, and uploads for recordings and phone calls</p><p class="small" style="margin-top:10px;font-weight:500;text-decoration:underline">meetings.html</p></a><a class="panel" href="meeting.html"><b style="font-size:18px;font-weight:500;letter-spacing:-.02em">Meeting notes</b><p class="small muted" style="margin-top:4px">Summary, decisions, actions and the transcript of one call</p><p class="small" style="margin-top:10px;font-weight:500;text-decoration:underline">meeting.html</p></a><a class="panel" href="ask.html"><b style="font-size:18px;font-weight:500;letter-spacing:-.02em">Ask your calls</b><p class="small muted" style="margin-top:4px">Ask a question across all calls and get an answer with sources</p><p class="small" style="margin-top:10px;font-weight:500;text-decoration:underline">ask.html</p></a><a class="panel" href="board.html"><b style="font-size:18px;font-weight:500;letter-spacing:-.02em">Sprint board</b><p class="small muted" style="margin-top:4px">Kanban with the development flow: To do, In progress, Code review, QA, Ready to release, Done</p><p class="small" style="margin-top:10px;font-weight:500;text-decoration:underline">board.html</p></a><a class="panel" href="backlog.html"><b style="font-size:18px;font-weight:500;letter-spacing:-.02em">Backlog and sprints</b><p class="small muted" style="margin-top:4px">Plan sprints against capacity and pull work from the backlog</p><p class="small" style="margin-top:10px;font-weight:500;text-decoration:underline">backlog.html</p></a><a class="panel" href="ticket.html"><b style="font-size:18px;font-weight:500;letter-spacing:-.02em">Ticket</b><p class="small muted" style="margin-top:4px">A story with its source quotes, acceptance criteria, status, GitHub branch and activity</p><p class="small" style="margin-top:10px;font-weight:500;text-decoration:underline">ticket.html</p></a><a class="panel" href="client.html"><b style="font-size:18px;font-weight:500;letter-spacing:-.02em">Client</b><p class="small muted" style="margin-top:4px">Everything about one client: promises we made, decisions, projects and calls</p><p class="small" style="margin-top:10px;font-weight:500;text-decoration:underline">client.html</p></a><a class="panel" href="automations.html"><b style="font-size:18px;font-weight:500;letter-spacing:-.02em">Automations</b><p class="small muted" style="margin-top:4px">Rules for what happens after a call, with a step-by-step editor</p><p class="small" style="margin-top:10px;font-weight:500;text-decoration:underline">automations.html</p></a><a class="panel" href="settings.html"><b style="font-size:18px;font-weight:500;letter-spacing:-.02em">Settings</b><p class="small muted" style="margin-top:4px">When Claude records, consent wording, retention, integrations and the workflow</p><p class="small" style="margin-top:10px;font-weight:500;text-decoration:underline">settings.html</p></a></div>
 </div></body></html>
